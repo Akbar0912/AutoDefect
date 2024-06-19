@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Component\RdButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Component\RdPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="View\DetailDefectView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Sementara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\SettingView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\TabControlView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
