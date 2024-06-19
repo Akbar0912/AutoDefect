@@ -75,7 +75,7 @@ namespace AutoDefect.View
             set { textBoxStatus.ForeColor = value; }
         }
 
-        public DateTime SelectedDate => throw new NotImplementedException();
+        public DateTime SelectedDate => dt.Value;
 
         public event EventHandler<ITabControlView.ModelEventArgs> SearchModelNumber;
         public event EventHandler ClearEvent;
@@ -448,8 +448,8 @@ namespace AutoDefect.View
 
         public void ShowPopupForm()
         {
-            //DetailDefectView popupForm = new DetailDefectView();
-            //popupForm.ShowDialog();
+            DetailDefectView popupForm = new DetailDefectView();
+            popupForm.ShowDialog();
         }
     }
 }

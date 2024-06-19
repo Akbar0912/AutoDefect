@@ -38,24 +38,24 @@ namespace AutoDefect.View
             {
                 int selectedTabPageIndex = 0;
                 tabControlPresenter.ChangeTabPage(selectedTabPageIndex);
-                btnHome.BackColor = Color.FromArgb(0, 133, 181);
-                btnRePrint.BackColor = Color.FromArgb(0, 35, 105);
+                btnHome.BackColor = Color.DarkOliveGreen;
+                btnRePrint.BackColor = Color.Teal;
             };
 
             btnSetting.Click += delegate
             {
 
-                //ISettingView settingView = SettingView.GetInstance();
-                //SettingPresenter settingPresenter = new SettingPresenter(settingView, new SettingModel());
-                //(settingView as Form)?.Show();
+                ISettingView settingView = SettingView.GetInstance();
+                SettingPresenter settingPresenter = new SettingPresenter(settingView, new SettingModel());
+                (settingView as Form)?.Show();
             };
 
             btnRePrint.Click += delegate
             {
                 int selectedTabPageIndex = 1;
                 tabControlPresenter.ChangeTabPage(selectedTabPageIndex);
-                btnHome.BackColor = Color.FromArgb(0, 35, 105);
-                btnRePrint.BackColor = Color.FromArgb(0, 133, 181);
+                btnRePrint.BackColor = Color.DarkOliveGreen;
+                btnHome.BackColor = Color.Teal;
             };
 
             btnLogOut.Click += delegate

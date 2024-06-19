@@ -68,6 +68,7 @@ namespace AutoDefect.Presenter
             _view.InspectorId = detailDefect.InspectorId;
             _view.InspectorName = detailDefect.Inspector;
             _view.Location = detailDefect.Location;
+            //_view.ShowPrintPreviewDialog(detailDefect);
         }
     }
 }

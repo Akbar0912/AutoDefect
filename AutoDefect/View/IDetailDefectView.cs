@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoDefect.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace AutoDefect.View
 
         event EventHandler SaveEvent;
         event EventHandler DataSaved;
+
+        void ShowPrintPreviewDialog(DefectResultModel model);
         void Show();
         void OnDataSaved();
     }

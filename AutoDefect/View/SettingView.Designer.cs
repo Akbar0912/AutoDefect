@@ -29,46 +29,50 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingView));
-            btnCancle = new Component.RdButton();
+            btnClose = new Component.RdButton();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
             label1 = new Label();
             label8 = new Label();
             label10 = new Label();
-            btnPrint = new Component.RdButton();
+            btnConnect = new Component.RdButton();
             label9 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            comboBox1 = new ComboBox();
+            textBoxIP = new TextBox();
+            textBoxPort = new TextBox();
+            locationBox = new ComboBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            btnOn = new RadioButton();
+            btnOff = new RadioButton();
+            label7 = new Label();
             tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
-            // btnCancle
+            // btnClose
             // 
-            btnCancle.BackColor = Color.Red;
-            btnCancle.BackgroundColor = Color.Red;
-            btnCancle.BorderColor = Color.PaleVioletRed;
-            btnCancle.BorderRadius = 8;
-            btnCancle.BorderSize = 0;
-            btnCancle.FlatAppearance.BorderSize = 0;
-            btnCancle.FlatStyle = FlatStyle.Flat;
-            btnCancle.Font = new Font("Helvetica", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancle.ForeColor = Color.White;
-            btnCancle.Image = (Image)resources.GetObject("btnCancle.Image");
-            btnCancle.Location = new Point(610, 547);
-            btnCancle.Name = "btnCancle";
-            btnCancle.Padding = new Padding(20, 0, 0, 0);
-            btnCancle.Size = new Size(165, 50);
-            btnCancle.TabIndex = 8;
-            btnCancle.Text = "Cancle";
-            btnCancle.TextColor = Color.White;
-            btnCancle.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCancle.UseVisualStyleBackColor = false;
+            btnClose.BackColor = Color.Red;
+            btnClose.BackgroundColor = Color.Red;
+            btnClose.BorderColor = Color.PaleVioletRed;
+            btnClose.BorderRadius = 8;
+            btnClose.BorderSize = 0;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Font = new Font("Helvetica", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClose.ForeColor = Color.White;
+            btnClose.Image = (Image)resources.GetObject("btnClose.Image");
+            btnClose.Location = new Point(635, 494);
+            btnClose.Name = "btnClose";
+            btnClose.Padding = new Padding(20, 0, 0, 0);
+            btnClose.Size = new Size(165, 50);
+            btnClose.TabIndex = 8;
+            btnClose.Text = "Close";
+            btnClose.TextColor = Color.White;
+            btnClose.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnClose.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -84,9 +88,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Helvetica", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(271, 0);
+            label3.Location = new Point(229, 0);
             label3.Name = "label3";
-            label3.Size = new Size(26, 42);
+            label3.Size = new Size(21, 42);
             label3.TabIndex = 0;
             label3.Text = ":";
             // 
@@ -94,7 +98,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Helvetica", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(3, 55);
+            label4.Location = new Point(3, 48);
             label4.Name = "label4";
             label4.Size = new Size(198, 42);
             label4.TabIndex = 0;
@@ -104,7 +108,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Helvetica", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(3, 113);
+            label5.Location = new Point(3, 99);
             label5.Name = "label5";
             label5.Size = new Size(88, 42);
             label5.TabIndex = 0;
@@ -120,21 +124,11 @@
             label6.TabIndex = 0;
             label6.Text = "Location";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Helvetica", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(260, 459);
-            label7.Name = "label7";
-            label7.Size = new Size(543, 38);
-            label7.TabIndex = 5;
-            label7.Text = "Apakah Data Defect Sudah Benar?";
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Helvetica", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(418, 57);
+            label1.Location = new Point(426, 66);
             label1.Name = "label1";
             label1.Size = new Size(249, 76);
             label1.TabIndex = 6;
@@ -144,9 +138,9 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Helvetica", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(271, 55);
+            label8.Location = new Point(229, 48);
             label8.Name = "label8";
-            label8.Size = new Size(26, 42);
+            label8.Size = new Size(21, 42);
             label8.TabIndex = 0;
             label8.Text = ":";
             // 
@@ -154,130 +148,188 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Helvetica", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(271, 173);
+            label10.Location = new Point(229, 173);
             label10.Name = "label10";
-            label10.Size = new Size(26, 42);
+            label10.Size = new Size(21, 42);
             label10.TabIndex = 0;
             label10.Text = ":";
             // 
-            // btnPrint
+            // btnConnect
             // 
-            btnPrint.BackColor = Color.ForestGreen;
-            btnPrint.BackgroundColor = Color.ForestGreen;
-            btnPrint.BorderColor = Color.PaleVioletRed;
-            btnPrint.BorderRadius = 8;
-            btnPrint.BorderSize = 0;
-            btnPrint.FlatAppearance.BorderSize = 0;
-            btnPrint.FlatStyle = FlatStyle.Flat;
-            btnPrint.Font = new Font("Helvetica", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPrint.ForeColor = Color.White;
-            btnPrint.Image = (Image)resources.GetObject("btnPrint.Image");
-            btnPrint.Location = new Point(273, 547);
-            btnPrint.Name = "btnPrint";
-            btnPrint.Padding = new Padding(25, 0, 0, 0);
-            btnPrint.Size = new Size(165, 50);
-            btnPrint.TabIndex = 9;
-            btnPrint.Text = "Ok";
-            btnPrint.TextColor = Color.White;
-            btnPrint.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnPrint.UseVisualStyleBackColor = false;
+            btnConnect.BackColor = Color.ForestGreen;
+            btnConnect.BackgroundColor = Color.ForestGreen;
+            btnConnect.BorderColor = Color.PaleVioletRed;
+            btnConnect.BorderRadius = 8;
+            btnConnect.BorderSize = 0;
+            btnConnect.FlatAppearance.BorderSize = 0;
+            btnConnect.FlatStyle = FlatStyle.Flat;
+            btnConnect.Font = new Font("Helvetica", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConnect.ForeColor = Color.White;
+            btnConnect.Location = new Point(298, 494);
+            btnConnect.Name = "btnConnect";
+            btnConnect.Size = new Size(165, 50);
+            btnConnect.TabIndex = 9;
+            btnConnect.Text = "Connect";
+            btnConnect.TextColor = Color.White;
+            btnConnect.UseVisualStyleBackColor = false;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Helvetica", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(271, 113);
+            label9.Location = new Point(229, 99);
             label9.Name = "label9";
-            label9.Size = new Size(26, 42);
+            label9.Size = new Size(21, 42);
             label9.TabIndex = 0;
             label9.Text = ":";
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 89.20863F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10.7913666F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 264F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 89.328064F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10.671937F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 354F));
             tableLayoutPanel1.Controls.Add(label2, 0, 0);
             tableLayoutPanel1.Controls.Add(label3, 1, 0);
             tableLayoutPanel1.Controls.Add(label4, 0, 1);
             tableLayoutPanel1.Controls.Add(label5, 0, 2);
-            tableLayoutPanel1.Controls.Add(label6, 0, 3);
+            tableLayoutPanel1.Controls.Add(label6, 0, 4);
             tableLayoutPanel1.Controls.Add(label8, 1, 1);
             tableLayoutPanel1.Controls.Add(label9, 1, 2);
-            tableLayoutPanel1.Controls.Add(label10, 1, 3);
-            tableLayoutPanel1.Controls.Add(textBox1, 2, 1);
-            tableLayoutPanel1.Controls.Add(textBox2, 2, 2);
-            tableLayoutPanel1.Controls.Add(comboBox1, 2, 3);
-            tableLayoutPanel1.Location = new Point(249, 189);
+            tableLayoutPanel1.Controls.Add(label10, 1, 4);
+            tableLayoutPanel1.Controls.Add(textBoxIP, 2, 1);
+            tableLayoutPanel1.Controls.Add(textBoxPort, 2, 2);
+            tableLayoutPanel1.Controls.Add(locationBox, 2, 4);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 2, 0);
+            tableLayoutPanel1.Controls.Add(label7, 2, 3);
+            tableLayoutPanel1.Location = new Point(242, 190);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 48.8F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 51.2F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 69F));
-            tableLayoutPanel1.Size = new Size(565, 243);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
+            tableLayoutPanel1.Size = new Size(608, 246);
             tableLayoutPanel1.TabIndex = 4;
             // 
-            // textBox1
+            // textBoxIP
             // 
-            textBox1.Font = new Font("Arial Narrow", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(303, 58);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 44);
-            textBox1.TabIndex = 1;
+            textBoxIP.Dock = DockStyle.Fill;
+            textBoxIP.Font = new Font("Arial Narrow", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxIP.Location = new Point(256, 51);
+            textBoxIP.Name = "textBoxIP";
+            textBoxIP.Size = new Size(349, 44);
+            textBoxIP.TabIndex = 1;
             // 
-            // textBox2
+            // textBoxPort
             // 
-            textBox2.Font = new Font("Arial Narrow", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(303, 116);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 44);
-            textBox2.TabIndex = 1;
+            textBoxPort.Dock = DockStyle.Fill;
+            textBoxPort.Font = new Font("Arial Narrow", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxPort.Location = new Point(256, 102);
+            textBoxPort.Name = "textBoxPort";
+            textBoxPort.Size = new Size(349, 44);
+            textBoxPort.TabIndex = 1;
             // 
-            // comboBox1
+            // locationBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(303, 176);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 2;
+            locationBox.Dock = DockStyle.Fill;
+            locationBox.Font = new Font("Arial Narrow", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            locationBox.FormattingEnabled = true;
+            locationBox.Location = new Point(256, 176);
+            locationBox.Name = "locationBox";
+            locationBox.Size = new Size(349, 45);
+            locationBox.TabIndex = 2;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(btnOn, 0, 0);
+            tableLayoutPanel2.Controls.Add(btnOff, 1, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(256, 3);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(349, 42);
+            tableLayoutPanel2.TabIndex = 3;
+            // 
+            // btnOn
+            // 
+            btnOn.AutoSize = true;
+            btnOn.Font = new Font("Arial", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnOn.Location = new Point(3, 3);
+            btnOn.Name = "btnOn";
+            btnOn.Size = new Size(76, 36);
+            btnOn.TabIndex = 3;
+            btnOn.TabStop = true;
+            btnOn.Text = "On";
+            btnOn.UseVisualStyleBackColor = true;
+            // 
+            // btnOff
+            // 
+            btnOff.AutoSize = true;
+            btnOff.Font = new Font("Arial", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnOff.Location = new Point(177, 3);
+            btnOff.Name = "btnOff";
+            btnOff.Size = new Size(77, 36);
+            btnOff.TabIndex = 3;
+            btnOff.TabStop = true;
+            btnOff.Text = "Off";
+            btnOff.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.Red;
+            label7.Location = new Point(256, 149);
+            label7.Name = "label7";
+            label7.Size = new Size(308, 18);
+            label7.TabIndex = 4;
+            label7.Text = "*Click button connect after change IP/PORT";
             // 
             // SettingView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1095, 676);
-            Controls.Add(btnCancle);
-            Controls.Add(label7);
+            Controls.Add(btnClose);
             Controls.Add(label1);
-            Controls.Add(btnPrint);
+            Controls.Add(btnConnect);
             Controls.Add(tableLayoutPanel1);
             Name = "SettingView";
             Text = "SettingView";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Component.RdButton btnCancle;
+        private Component.RdButton btnClose;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
         private Label label1;
         private Label label8;
         private Label label10;
-        private Component.RdButton btnPrint;
+        private Component.RdButton btnConnect;
         private Label label9;
         private TableLayoutPanel tableLayoutPanel1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private ComboBox comboBox1;
+        private TextBox textBoxIP;
+        private TextBox textBoxPort;
+        private ComboBox locationBox;
+        private RadioButton btnOn;
+        private TableLayoutPanel tableLayoutPanel2;
+        private RadioButton btnOff;
+        private Label label7;
     }
 }

@@ -28,6 +28,9 @@ namespace AutoDefect.View
         public DetailDefectView()
         {
             InitializeComponent();
+            printMode = new PrintModeModel();  // Inisialisasi printMode
+            defectResult = new DefectResultModel();  // Inisialisasi defectResult
+            _printLayout = new PrintLayout(new ModelCode());
             AssociateAndRaiseViewEvents();
         }
 
@@ -96,7 +99,14 @@ namespace AutoDefect.View
 
                 if (mode == "on")
                 {
-                    currentTime = DateTime.Now.ToString("HH:mm:ss");
+                    //currentTime = DateTime.Now.ToString("HH:mm:ss");
+
+                    defectResult.ModelNumber = ModelNumber;
+                    defectResult.SerialNumber = SerialNumber;
+                    defectResult.Time = currentTime;
+                    defectResult.Date = currentDate;
+                    defectResult.Inspector = InspectorName;
+                    defectResult.Defect = DefectName;
 
                     ShowPrintPreviewDialog(defectResult);
                   
@@ -128,8 +138,8 @@ namespace AutoDefect.View
             printPreviewDialog.Document = pd;
 
             // Menampilkan dialog preview cetak
-            //printPreviewDialog.ShowDialog();
-            pd.Print();
+            printPreviewDialog.ShowDialog();
+            //pd.Print();
         }
 
         private static DetailDefectView instance;

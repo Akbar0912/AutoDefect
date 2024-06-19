@@ -83,11 +83,11 @@
             tabPage2 = new TabPage();
             tableLayoutPanel6 = new TableLayoutPanel();
             dataGridView2 = new DataGridView();
-            No2 = new DataGridViewTextBoxColumn();
             tableLayoutPanel5 = new TableLayoutPanel();
             label6 = new Label();
             dt = new DateTimePicker();
             btnSearch = new Component.RdButton();
+            No2 = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -981,7 +981,6 @@
             btnClear.FlatStyle = FlatStyle.Flat;
             btnClear.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Image = (Image)resources.GetObject("btnClear.Image");
             btnClear.Location = new Point(994, 3);
             btnClear.Name = "btnClear";
             btnClear.Padding = new Padding(35, 0, 0, 0);
@@ -1004,7 +1003,6 @@
             btnPrintManual.FlatStyle = FlatStyle.Flat;
             btnPrintManual.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPrintManual.ForeColor = Color.White;
-            btnPrintManual.Image = (Image)resources.GetObject("btnPrintManual.Image");
             btnPrintManual.Location = new Point(994, 54);
             btnPrintManual.Name = "btnPrintManual";
             btnPrintManual.Padding = new Padding(30, 0, 0, 0);
@@ -1044,6 +1042,7 @@
             // 
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { No2 });
             dataGridView2.Dock = DockStyle.Fill;
@@ -1052,14 +1051,6 @@
             dataGridView2.RowHeadersVisible = false;
             dataGridView2.Size = new Size(1256, 621);
             dataGridView2.TabIndex = 0;
-            // 
-            // No2
-            // 
-            No2.HeaderText = "No";
-            No2.Name = "No2";
-            No2.ReadOnly = true;
-            No2.Resizable = DataGridViewTriState.False;
-            No2.Width = 50;
             // 
             // tableLayoutPanel5
             // 
@@ -1102,8 +1093,8 @@
             // 
             // btnSearch
             // 
-            btnSearch.BackColor = Color.MediumSlateBlue;
-            btnSearch.BackgroundColor = Color.MediumSlateBlue;
+            btnSearch.BackColor = Color.DarkOliveGreen;
+            btnSearch.BackgroundColor = Color.DarkOliveGreen;
             btnSearch.BorderColor = Color.PaleVioletRed;
             btnSearch.BorderRadius = 8;
             btnSearch.BorderSize = 0;
@@ -1119,6 +1110,15 @@
             btnSearch.Text = "Search";
             btnSearch.TextColor = Color.White;
             btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // No2
+            // 
+            No2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            No2.HeaderText = "No";
+            No2.Name = "No2";
+            No2.ReadOnly = true;
+            No2.Resizable = DataGridViewTriState.False;
+            No2.Width = 50;
             // 
             // TabControlView
             // 
@@ -1208,7 +1208,7 @@
         private Label label6;
         private DateTimePicker dt;
         private Component.RdButton btnSearch;
-        private DataGridViewTextBoxColumn No2;
         private DataGridViewTextBoxColumn No;
+        private DataGridViewTextBoxColumn No2;
     }
 }

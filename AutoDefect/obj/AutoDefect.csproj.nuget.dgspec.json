@@ -73,6 +73,10 @@
             "ZXing.Net": {
               "target": "Package",
               "version": "[0.16.9, )"
+            },
+            "ZXing.Net.Bindings.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[0.16.12, )"
             }
           },
           "imports": [

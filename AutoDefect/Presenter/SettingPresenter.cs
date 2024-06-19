@@ -42,11 +42,13 @@ namespace AutoDefect.Presenter
         private void offRadio_Checked()
         {
             _printMode.SaveData(_view.mode);
+            MessageBox.Show(_view.mode);
         }
 
         private void onRadio_Checked()
         {
             _printMode.SaveData(_view.mode);
+            MessageBox.Show(_view.mode);
         }
 
         private void View_SelectedIndexChanged(object sender, EventArgs e)

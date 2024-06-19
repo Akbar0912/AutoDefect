@@ -17,7 +17,8 @@ namespace AutoDefect.Model
         private string serialNumber;
         private string date;
         private string time;
-        private string inspector;
+        private string inspectorId;
+        private string inspectorName;
         private string locationId;
 
         //properties
@@ -74,8 +75,8 @@ namespace AutoDefect.Model
         [DisplayName("Inspector")]
         public string Inspector
         {
-            get => inspector;
-            set => inspector = value;
+            get => inspectorId;
+            set => inspectorId = value;
         }
 
         [DisplayName("Location")]
@@ -83,6 +84,13 @@ namespace AutoDefect.Model
         {
             get => locationId;
             set => locationId = value;
+        }
+
+        [Browsable(false)]
+        public string InspectorName 
+        { 
+            get => inspectorName; 
+            set => inspectorName = value; 
         }
     }
 }

@@ -1,19 +1,25 @@
 ﻿using AutoDefect.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ZXing;
 using ZXing.Common;
-using ZXing.QrCode.Internal;
+using ZXing.Windows.Compatibility;
 
 namespace AutoDefect.Presenter
 {
     public class PrintLayout
     {
         private ModelCode _modelCode;
+
+        public PrintLayout(ModelCode modelCode)
+        {
+            _modelCode = modelCode ?? throw new ArgumentNullException(nameof(modelCode));  // Pastikan modelCode tidak null
+        }
 
         public void Print(PrintPageEventArgs e, DefectResultModel defectResult)
         {
@@ -178,18 +184,19 @@ namespace AutoDefect.Presenter
 
             // Membuat barcode dari model number dan serial number
             string qrCode = $"{_modelCode.modelCode1}{defectResult.SerialNumber}";
-            BarcodeWriter<Bitmap> barcodeWriter = new BarcodeWriter<Bitmap>
+            BarcodeWriter<Bitmap> barcodeWriter = new BarcodeWriter<Bitmap>()
             {
                 Format = BarcodeFormat.QR_CODE,
                 Options = new EncodingOptions
                 {
-                    //CharacterSet = "ISO-8859-1",
-                    Width = 70, // Lebar QR code
-                    Height = 70, // Tinggi QR code
+                    Width = 70,
+                    Height = 70,
                     Margin = 0
-                }
+                },
+                Renderer = new BitmapRenderer() // Atur renderer di sini
             };
             Bitmap qrBitmap = barcodeWriter.Write(qrCode);
+
 
             // Gambar barcode di halaman cetak
             e.Graphics.DrawImage(qrBitmap, new PointF(xPos, yPos + 185)); // Sesuaikan posisi barcode sesuai kebutuhan

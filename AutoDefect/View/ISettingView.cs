@@ -21,7 +21,7 @@ namespace AutoDefect.View
         event EventHandler LoadLocation;
         event EventHandler HandleRadioButton;
 
-        void DisplayName(string JPName);
+        //void DisplayName(string JPName);
         void DisplayIP(string IPaddress);
         void DisplayPort(int portAddress);
         void DisplaySetting(string locationName);

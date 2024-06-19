@@ -52,7 +52,6 @@ namespace AutoDefect.Model
         {
             Properties.Settings.Default.ServerIP = serverIP;
             Properties.Settings.Default.Save();
-            //OnSettingsSaved(serverIP);
         }
 
         public void SaveSettingPort(string port)
@@ -62,7 +61,6 @@ namespace AutoDefect.Model
             {
                 Properties.Settings.Default.Port = portNumber;
                 Properties.Settings.Default.Save();
-                //OnSaveSettingsPort(portNumber);
             }
         }
     }

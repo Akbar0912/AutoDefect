@@ -46,13 +46,13 @@ namespace AutoDefect
             {
                 if (isClickedOnce)
                 {
-                    hiddenPass.Image = Properties.Resources.hide;
+                    hiddenPass.Image = Properties.Resources.eye;
                     textBoxPassword.PasswordChar = '\0';
                     isClickedOnce = false;
                 }
                 else
                 {
-                    hiddenPass.Image = Properties.Resources.show;
+                    hiddenPass.Image = Properties.Resources.show__1_;
                     textBoxPassword.PasswordChar = '*';
                     isClickedOnce = true;
                 }

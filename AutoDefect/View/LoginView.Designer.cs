@@ -88,7 +88,7 @@
             // 
             // hiddenPass
             // 
-            hiddenPass.Image = Properties.Resources.show;
+            hiddenPass.Image = Properties.Resources.show__1_;
             hiddenPass.Location = new Point(566, 255);
             hiddenPass.Name = "hiddenPass";
             hiddenPass.Size = new Size(35, 31);
@@ -230,6 +230,7 @@
             ClientSize = new Size(1269, 677);
             Controls.Add(rdPanel1);
             Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "LoginView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
