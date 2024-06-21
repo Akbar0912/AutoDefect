@@ -20,6 +20,7 @@ namespace AutoDefect.Presenter
         private IEnumerable<DefectResultModel> resultList;
         private SettingModel _smodel;
         private bool showNoData = false;
+        private PrintModeModel printMode;
 
         public TabControlPresenter(TabControlDataPresenter data)
         {
@@ -28,6 +29,7 @@ namespace AutoDefect.Presenter
             this.modelNumberRepository = data.ModelNumberRepository;
             this.view.InspectorId = data.User.Nik;
             this.view.Inspector = data.User.Name;
+            printMode = new PrintModeModel();
 
             _smodel = new SettingModel();
             defectsBindingSource = new BindingSource();
@@ -99,6 +101,7 @@ namespace AutoDefect.Presenter
             }
             else
             {
+                //LoadAllDefectList();
                 defectList = defectRepository.GetAll();
             }
 
@@ -108,8 +111,8 @@ namespace AutoDefect.Presenter
         }
 
         public void SearchFilter(object sender, EventArgs e)
-        {
-            resultList = defectRepository.GetFilterResult(view.SelectedDate);
+        {  
+            resultList = defectRepository.GetFilterResult(view.DefectName,view.SelectedDate);
             defectsBindingSource2.DataSource = resultList;
             view.SetDefectListBindingSource2(defectsBindingSource2);
         }
@@ -128,17 +131,30 @@ namespace AutoDefect.Presenter
 
         private void CheckProperties(object sender, EventArgs e)
         {
+            string mode = printMode.GetMode();
+
             if (string.IsNullOrWhiteSpace(view.ModelNumber))
             {
                 view.StatusText = "Model Number dan Mode Code Harus terisi";
-                view.BackColorStatus = Color.Orange;
+                view.BackColorStatus = Color.Salmon;
                 view.ForeColorStatus = Color.Black;
                 return;
             }
+            if( mode == "off" )
+            {
+                view.StatusText = "Data berhasil tersimpan, print dalam mode OFF";
+                view.BackColorStatus = Color.Orange;
+                view.ForeColorStatus = Color.Black;
+                CellClicked();
+                return;
+            }
+            //else if (mode == "on")
+            //{
+            //    view.StatusText = "Data berhasil tersimpan";
+            //    view.BackColorStatus = Color.Green;
+            //    view.ForeColorStatus = Color.White;
+            //}
 
-            view.StatusText = "Simpan dan Print";
-            view.BackColorStatus = Color.Green;
-            view.ForeColorStatus = Color.White;
             CellClicked();
         }
 
@@ -146,6 +162,7 @@ namespace AutoDefect.Presenter
         {
             int Location = int.Parse(_smodel.LoadLocationID());
             var defect = (DefectModel)defectsBindingSource.Current;
+            //int partid = int.Parse(defect.PartId1);
             var detailDefect = new
             {
                 SerialNumber = view.SerialNumber,
@@ -153,6 +170,8 @@ namespace AutoDefect.Presenter
                 ModelCode = view.ModelCode,
                 DefectId = defect.Id1,
                 DefectName = defect.DefectName1,
+                PartId = defect.PartId1,
+                PartName = defect.PartName1,
                 InspectorId = view.InspectorId,
                 Inspector = view.Inspector,
                 Location = Location

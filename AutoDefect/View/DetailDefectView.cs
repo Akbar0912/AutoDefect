@@ -18,8 +18,10 @@ namespace AutoDefect.View
         private DefectResultModel defectResult;
         private PrintModeModel printMode;
         private PrintLayout _printLayout;
+        private TabControlView tabControl;
         private string modelCode;
         private int defectId;
+        private int partId;
         private string inspectorId;
         private string message;
         public string currentDate = DateTime.Now.ToString("dd/MM/yyyy");
@@ -31,6 +33,7 @@ namespace AutoDefect.View
             printMode = new PrintModeModel();  // Inisialisasi printMode
             defectResult = new DefectResultModel();  // Inisialisasi defectResult
             _printLayout = new PrintLayout(new ModelCode());
+            tabControl = new TabControlView();
             AssociateAndRaiseViewEvents();
         }
 
@@ -42,13 +45,13 @@ namespace AutoDefect.View
         }
         public string ModelCode 
         {
-            get { return textModel.Text; }
-            set { textModel.Text = value; }
+            get { return modelCode; }
+            set { modelCode = value; }
         }
         public string ModelNumber 
         { 
-            get { return modelCode; }
-            set { modelCode = value; }
+            get { return textModelNumber.Text; }
+            set { textModelNumber.Text = value; }
         }
         public int DefectId 
         {
@@ -81,6 +84,17 @@ namespace AutoDefect.View
             set { textLocation.Text = value.ToString(); }
         }
 
+        public int PartId 
+        {
+            get => partId;
+            set => partId = value;
+        }
+        public string PartName 
+        {
+            get => labelPart.Text; 
+            set => labelPart.Text = value;
+        }
+
         public event EventHandler SaveEvent;
         public event EventHandler DataSaved;
 
@@ -95,11 +109,10 @@ namespace AutoDefect.View
             {
 
                 string mode = printMode.GetMode();
-                SaveEvent?.Invoke(this, EventArgs.Empty);
 
+                SaveEvent?.Invoke(this, EventArgs.Empty);
                 if (mode == "on")
                 {
-                    //currentTime = DateTime.Now.ToString("HH:mm:ss");
 
                     defectResult.ModelNumber = ModelNumber;
                     defectResult.SerialNumber = SerialNumber;
@@ -114,7 +127,8 @@ namespace AutoDefect.View
                 }
                 else
                 {
-                    MessageBox.Show("Mode print dalam keadaan OFF tidak bisa melakukan Print");
+                    tabControl.StatusText = "Data berhasil tersimpan, print dalam mode OFF";
+                    this.Close();
                 }
 
             };

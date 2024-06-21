@@ -14,6 +14,6 @@ namespace AutoDefect.Model
         IEnumerable<DefectModel> GetAll();
         IEnumerable<DefectModel> GetByValue(string value);
         IEnumerable<DefectResultModel> GetAllResult();
-        IEnumerable<DefectResultModel> GetFilterResult(DateTime selectedDate);
+        IEnumerable<DefectResultModel> GetFilterResult(string defectName, DateTime selectedDate);
     }
 }

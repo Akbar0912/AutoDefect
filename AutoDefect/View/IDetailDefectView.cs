@@ -14,6 +14,8 @@ namespace AutoDefect.View
         string ModelNumber { get; set; }
         int DefectId { get; set; }
         string DefectName { get; set; }
+        int PartId { get; set; }
+        string PartName { get; set; }
         string InspectorId { get; set; }
         string InspectorName { get; set; }
         int Location { get; set; }

@@ -10,16 +10,17 @@ namespace AutoDefect.Model
     public class DefectResultModel
     {
         //Fields
-        private string id;
-        private string defect;
-        private string modelNumber;
-        private string modelCode;
-        private string serialNumber;
-        private string date;
-        private string time;
-        private string inspectorId;
-        private string inspectorName;
-        private string locationId;
+        public string id;
+        public string defect;
+        public string partName;
+        public string modelNumber;
+        public string modelCode;
+        public string serialNumber;
+        public string date;
+        public string time;
+        public string inspectorId;
+        public string inspectorName;
+        public string locationId;
 
         //properties
         [DisplayName("No")]
@@ -30,11 +31,17 @@ namespace AutoDefect.Model
             set => id = value;
         }
 
-        [DisplayName("Defect")]
+        [DisplayName("Defect Name")]
         public string Defect
         {
             get => defect;
             set => defect = value;
+        }
+        [DisplayName("Part Name")]
+        public string PartName 
+        { 
+            get => partName; 
+            set => partName = value; 
         }
 
         [DisplayName("Model Number")]

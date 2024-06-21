@@ -54,7 +54,7 @@ namespace AutoDefect.Presenter
         private void View_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
-            string location = comboBox?.SelectedItem as string;
+            //string location = comboBox?.SelectedItem as string;
 
             if (comboBox?.SelectedItem != null)
             {
@@ -74,6 +74,8 @@ namespace AutoDefect.Presenter
         private void View_LoadSettings(object sender, EventArgs e)
         {
             LoadLocationNames();
+            string loadedSetting = _model.LoadLocation();
+            _view.DisplaySetting(loadedSetting);
         }
         private void View_LoadIP(object sender, EventArgs e)
         {
@@ -81,7 +83,7 @@ namespace AutoDefect.Presenter
             _view.DisplayIP(loadedIP);
         }
 
-        private void View_LoadPort(object sender, EventArgs e)
+        private void View_LoadPort(object sender, EventArgs e)  
         {
             int loadedPort = _model.LoadPort();
             _view.DisplayPort(loadedPort);
@@ -100,8 +102,8 @@ namespace AutoDefect.Presenter
         {
             List<string> locationNames = _smodel.GetLocationNames();
             _view.LocationNames = locationNames;
-            string loadedSetting = _model.LoadLocation();
-            _view.DisplaySetting(loadedSetting);
+            //string loadedSetting = _model.LoadLocation();
+            //_view.DisplaySetting(loadedSetting);
         }
     }
 }

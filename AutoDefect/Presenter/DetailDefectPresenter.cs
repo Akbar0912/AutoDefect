@@ -12,6 +12,7 @@ namespace AutoDefect.Presenter
     public class DetailDefectPresenter
     {
         private readonly IDetailDefectView _view;
+        private TabControlView _tabControl;
         private readonly IDefectRepository repository;
         private readonly PrintModeModel _smodel;
 
@@ -23,6 +24,8 @@ namespace AutoDefect.Presenter
             this._view.SaveEvent += SaveEvent;
             SetData(detailDefect);
             this._view.Show();
+
+
         }
 
         private void SaveEvent(object? sender, EventArgs e)
@@ -31,9 +34,26 @@ namespace AutoDefect.Presenter
 
             if (mode == "off")
             {
-                // Jika mode off, tampilkan pesan bahwa save tidak diperlukan
-                _view.Message = "Mode is off. No save action needed.";
-                MessageBox.Show(_view.Message);
+                _tabControl.StatusText = "Data berhasil tersimpan, print dalam mode OFF";
+                _tabControl.BackColorStatus = Color.Orange;
+                _tabControl.ForeColorStatus = Color.Black;
+                var model = new
+                {
+                    _view.SerialNumber,
+                    _view.ModelNumber,
+                    _view.ModelCode,
+                    _view.DefectId,
+                    _view.DefectName,
+                    _view.InspectorId,
+                    _view.InspectorName,
+                    _view.PartId,
+                    _view.PartName,
+                    _view.Location,
+                };
+                repository.Add(model);
+                _view.OnDataSaved();
+
+                _view.SaveEvent -= SaveEvent;
             }
             else
             {
@@ -47,10 +67,15 @@ namespace AutoDefect.Presenter
                     _view.DefectName,
                     _view.InspectorId,
                     _view.InspectorName,
+                    _view.PartId,
+                    _view.PartName,
                     _view.Location,
                 };
-                //new Common.ModelDataValidation().Validate(model);
                 repository.Add(model);
+
+                _tabControl.StatusText = "Data berhasil tersimpan";
+                _tabControl.BackColorStatus = Color.Green;
+                _tabControl.ForeColorStatus = Color.White;
 
                 _view.OnDataSaved();
 
@@ -68,7 +93,8 @@ namespace AutoDefect.Presenter
             _view.InspectorId = detailDefect.InspectorId;
             _view.InspectorName = detailDefect.Inspector;
             _view.Location = detailDefect.Location;
-            //_view.ShowPrintPreviewDialog(detailDefect);
+            _view.PartId = detailDefect.PartId;
+            _view.PartName = detailDefect.PartName;
         }
     }
 }

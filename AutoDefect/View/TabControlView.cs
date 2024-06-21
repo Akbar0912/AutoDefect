@@ -29,53 +29,55 @@ namespace AutoDefect.View
             tabControl1.SizeMode = TabSizeMode.Fixed;
         }
 
-        public string SerialNumber 
+        public string SerialNumber
         {
             get { return textBoxSerial.Text; }
             set { textBoxSerial.Text = value; }
         }
-        public string ModelCode 
-        { 
+        public string ModelCode
+        {
             get { return textBoxCode.Text; }
             set { textBoxCode.Text = value; }
         }
-        public string ModelNumber 
+        public string ModelNumber
         {
             get { return textBoxNumber.Text; }
             set { textBoxNumber.Text = value; }
         }
-        public string InspectorId 
+        public string InspectorId
         {
             get { return inspectorId; }
-            set {  inspectorId = value; }
+            set { inspectorId = value; }
         }
-        public string Inspector 
+        public string Inspector
         {
             get { return textBoxInspector.Text; }
-            set { textBoxInspector.Text = value; } 
+            set { textBoxInspector.Text = value; }
         }
-        public string StatusText 
+        public string StatusText
         {
             get { return textBoxStatus.Text; }
             set { textBoxStatus.Text = value; }
         }
-        public bool IsKeyboardEnabled 
+        public bool IsKeyboardEnabled
         {
-            get { return true; } 
+            get { return true; }
             set { }
         }
-        public Color BackColorStatus 
-        { 
+        public Color BackColorStatus
+        {
             get { return textBoxStatus.BackColor; }
             set { textBoxStatus.BackColor = value; }
         }
-        public Color ForeColorStatus 
+        public Color ForeColorStatus
         {
             get { return textBoxStatus.ForeColor; }
             set { textBoxStatus.ForeColor = value; }
         }
 
         public DateTime SelectedDate => dt.Value;
+
+        public string DefectName => textBoxSearch.Text;
 
         public event EventHandler<ITabControlView.ModelEventArgs> SearchModelNumber;
         public event EventHandler ClearEvent;
@@ -96,6 +98,15 @@ namespace AutoDefect.View
                     ClearEvent?.Invoke(this, EventArgs.Empty);
                     textBoxSerial.Focus();
                 }
+                else
+                {
+                    textBoxStatus.Text = "";
+                    textBoxStatus.BackColor = SystemColors.Control;
+                    //textBoxSerial.Text = "";
+                    //textBoxNumber.Text = "";
+                    //textBoxCode.Text = "";
+                }
+                textBoxStatus.BackColor = SystemColors.Control;
             };
 
             btnSearch.Click += (sender, e) =>
@@ -108,8 +119,8 @@ namespace AutoDefect.View
                 if (!buttonClickedOnce)
                 {
                     disableEvent = true;
-                    btnPrintManual.BackColor = Color.FromArgb(230, 255, 148);
-                    btnPrintManual.ForeColor = Color.Black;
+                    btnPrintManual.BackColor = Color.FromArgb(122, 178, 178);
+                    btnPrintManual.ForeColor = Color.White;
                     btnPrintManual.Text = "Auto Print";
                     textBoxSerial.ReadOnly = false;
                     textBoxSerial.Focus();
@@ -123,7 +134,8 @@ namespace AutoDefect.View
                 else
                 {
                     disableEvent = false;
-                    btnPrintManual.BackColor = Color.FromArgb(64, 165, 120);
+                    btnPrintManual.BackColor = Color.FromArgb(77, 134, 156);
+                    btnPrintManual.ForeColor = Color.White;
                     textBoxStatus.Text = "";
                     textBoxStatus.BackColor = SystemColors.Control;
                     btnPrintManual.Text = "Print Manual";
@@ -336,7 +348,9 @@ namespace AutoDefect.View
             };
 
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 18, FontStyle.Bold);
-            dataGridView1.ColumnHeadersHeight = 40;
+            dataGridView1.ColumnHeadersHeight = 60;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Teal; // Change to your desired color
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
             dataGridView1.DefaultCellStyle.Font = new Font("Arial", 16);
             dataGridView1.RowTemplate.Height = 50;
@@ -344,26 +358,42 @@ namespace AutoDefect.View
             dataGridView2.RowPostPaint += (sender, e) =>
             {
                 DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
-
-                row.Cells["No2"].Value = (e.RowIndex + 1).ToString();
+                int totalRows = dataGridView2.Rows.Count;
+                row.Cells["No2"].Value = (totalRows - e.RowIndex).ToString();
                 row.Cells["No2"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             };
 
             dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 18, FontStyle.Bold);
             dataGridView2.ColumnHeadersHeight = 40;
+            dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.Teal; // Change to your desired color
+            dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
             dataGridView2.DefaultCellStyle.Font = new Font("Arial", 16);
             dataGridView2.RowTemplate.Height = 50;
+
+            timer1.Tick += delegate
+            {
+                labelDate.Text = DateTime.Now.ToLongDateString();
+                labelTime.Text = DateTime.Now.ToLongTimeString();
+            };
+
+            btnClear2.Click += delegate
+            {
+                textBoxSearch.Text = "";
+                textBoxSearch.Focus();
+                dt.Text = DateTime.Now.ToString();
+                SearchFilter?.Invoke(this, EventArgs.Empty);
+            };
         }
 
         private void ChangeColorButton(object sender, EventArgs e)
         {
             foreach (Control c in Panel3.Controls)
             {
-                c.BackColor = Color.FromArgb(64, 165, 120);
+                c.BackColor = Color.FromArgb(77, 134, 156);
             }
             Control click = (Control)sender;
-            click.BackColor = Color.FromArgb(157, 222, 139);
+            click.BackColor = Color.FromArgb(122, 178, 178);
         }
 
         private void PerformModelSearch()
@@ -450,6 +480,42 @@ namespace AutoDefect.View
         {
             DetailDefectView popupForm = new DetailDefectView();
             popupForm.ShowDialog();
+        }
+
+        private async void TabControlView_Load(object sender, EventArgs e)
+        {
+            timer1.Start();
+            connection = new TCPConnection(UpdateCodeBox, UpdateSerialBox); // Passing both update methods
+            await connection.ConnectToServerAsync();
+        }
+
+        private void textBoxSerial_TextChanged(object sender, EventArgs e)
+        {
+            if (!disableEvent)
+            {
+                if (textBoxSerial.Text != null)
+                {
+                    textBoxStatus.Text = "...";
+                    textBoxStatus.BackColor = Color.Orange;
+                }
+            }
+        }
+
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchFilter?.Invoke(sender, e);
+            }
+
+        }
+
+        private void dt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchFilter?.Invoke(sender, e);
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ namespace AutoDefect.View
             {
                 int selectedTabPageIndex = 0;
                 tabControlPresenter.ChangeTabPage(selectedTabPageIndex);
-                btnHome.BackColor = Color.DarkOliveGreen;
+                btnHome.BackColor = Color.FromArgb(77, 134, 156);
                 btnRePrint.BackColor = Color.Teal;
             };
 
@@ -54,7 +54,7 @@ namespace AutoDefect.View
             {
                 int selectedTabPageIndex = 1;
                 tabControlPresenter.ChangeTabPage(selectedTabPageIndex);
-                btnRePrint.BackColor = Color.DarkOliveGreen;
+                btnRePrint.BackColor = Color.FromArgb(77,134,156);
                 btnHome.BackColor = Color.Teal;
             };
 

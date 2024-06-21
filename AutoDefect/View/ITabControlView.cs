@@ -16,6 +16,7 @@ namespace AutoDefect.View
         string InspectorId { get; set; }
         string Inspector { get; set; }
         string StatusText { get; set; }
+        string DefectName { get; }
         bool IsKeyboardEnabled { get; set; }
         Color BackColorStatus { get; set; }
         Color ForeColorStatus { get; set; }

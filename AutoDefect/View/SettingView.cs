@@ -27,7 +27,8 @@ namespace AutoDefect.View
             InitializeEventHandler();
             _printMode = new PrintModeModel();
             LoadRadioSettings();
-            Load += (sender, e) => LoadLocation?.Invoke(sender, e);
+            //Load += (sender, e) => LoadLocation?.Invoke(sender, e);
+            Load += SettingView_Load;
         }
 
         private void LoadRadioSettings()
@@ -36,22 +37,22 @@ namespace AutoDefect.View
             btnOff.Checked = Properties.Settings.Default.Mode == "off";
         }
 
-        public List<string> LocationNames 
-        { 
+        public List<string> LocationNames
+        {
             get => locationBox.DataSource as List<string>;
             set => locationBox.DataSource = value;
         }
-        public string ipaddress 
-        { 
+        public string ipaddress
+        {
             get => textBoxIP.Text;
             set => textBoxIP.Text = value;
         }
-        public string portaddress 
-        { 
+        public string portaddress
+        {
             get => textBoxPort.Text;
             set => textBoxPort.Text = value;
         }
-        public string mode 
+        public string mode
         {
             get;
             set;
@@ -70,14 +71,9 @@ namespace AutoDefect.View
             textBoxIP.Text = IPaddress;
         }
 
-        //public void DisplayName(string JPName)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public void DisplayPort(int portAddress)
         {
-            textBoxPort.Text = portaddress.ToString();
+            textBoxPort.Text = portAddress.ToString();
         }
 
         public void DisplaySetting(string locationName)
@@ -102,7 +98,7 @@ namespace AutoDefect.View
         {
             locationBox.SelectedIndexChanged += (sender, e) =>
             {
-                if(!isInitializing)
+                if (!isInitializing)
                 {
                     SelectedIndexChanged?.Invoke(sender, e);
                 }
@@ -120,10 +116,10 @@ namespace AutoDefect.View
 
             btnConnect.Click += delegate
             {
+                this.Close();
                 ILoginView loginView = new LoginView();
                 LoginPresenter loginPresenter = new LoginPresenter(loginView, new LoginRepository());
                 (loginView as Form)?.Show();
-                this.Close();
             };
 
             btnOn.CheckedChanged += (sender, e) =>
@@ -149,6 +145,15 @@ namespace AutoDefect.View
             {
                 this.Close();
             };
+        }
+
+        private void SettingView_Load(object sender, EventArgs e)
+        {
+            isInitializing = true;
+            LoadLocation?.Invoke(this, EventArgs.Empty);
+            LoadIP?.Invoke(this, EventArgs.Empty);
+            LoadPort?.Invoke(this, EventArgs.Empty);
+            isInitializing = false;
         }
     }
 }

@@ -12,12 +12,13 @@ namespace AutoDefect.Model
     {
         //Fields
         private int Id;
-        private string PartId;
+        private string PartName;
+        private int PartId;
         private string DefectName;
 
         //properties
         [DisplayName("No")]
-        [Browsable(false)] // Tambahkan atribut ini
+        [Browsable(false)] // Untuk visible tampilan
         public int Id1
         {
             get => Id;
@@ -25,7 +26,13 @@ namespace AutoDefect.Model
         }
 
         [DisplayName("Part Name")]
-        public string PartId1
+        public string PartName1 
+        { 
+            get => PartName; 
+            set => PartName = value; 
+        }
+        [Browsable(false)]
+        public int PartId1
         {
             get => PartId;
             set => PartId = value;
@@ -37,5 +44,6 @@ namespace AutoDefect.Model
             get => DefectName;
             set => DefectName = value;
         }
+        
     }
 }
