@@ -953,7 +953,6 @@
             textBoxSerial.ReadOnly = true;
             textBoxSerial.Size = new Size(268, 42);
             textBoxSerial.TabIndex = 3;
-            textBoxSerial.TextChanged += textBoxSerial_TextChanged;
             // 
             // textBoxNumber
             // 

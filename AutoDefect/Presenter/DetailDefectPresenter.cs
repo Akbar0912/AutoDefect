@@ -12,15 +12,16 @@ namespace AutoDefect.Presenter
     public class DetailDefectPresenter
     {
         private readonly IDetailDefectView _view;
-        private TabControlView _tabControl;
+        private ITabControlView _tabControl;
         private readonly IDefectRepository repository;
         private readonly PrintModeModel _smodel;
 
-        public DetailDefectPresenter(IDetailDefectView View, IDefectRepository defectRepository, dynamic detailDefect)
+        public DetailDefectPresenter(IDetailDefectView View, IDefectRepository defectRepository, ITabControlView tabControl, dynamic detailDefect)
         {
             this._view = View;
             this.repository = defectRepository;
             this._smodel = new PrintModeModel();
+            this._tabControl = tabControl;
             this._view.SaveEvent += SaveEvent;
             SetData(detailDefect);
             this._view.Show();
@@ -35,8 +36,8 @@ namespace AutoDefect.Presenter
             if (mode == "off")
             {
                 _tabControl.StatusText = "Data berhasil tersimpan, print dalam mode OFF";
-                _tabControl.BackColorStatus = Color.Orange;
-                _tabControl.ForeColorStatus = Color.Black;
+                _tabControl.BackColorStatus = Color.Green;
+                _tabControl.ForeColorStatus = Color.White;
                 var model = new
                 {
                     _view.SerialNumber,

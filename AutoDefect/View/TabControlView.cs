@@ -305,14 +305,6 @@ namespace AutoDefect.View
                 DefectFilterEvent?.Invoke(this, EventArgs.Empty, int.Parse(btnZ.Tag.ToString()));
             };
 
-            textBoxSerial.TextChanged += (sender, e) =>
-            {
-                if (!string.IsNullOrWhiteSpace(textBoxSerial.Text))
-                {
-                    textBoxStatus.Text = "...";
-                }
-            };
-
             textBoxSerial.KeyDown += (sender, e) =>
             {
                 KeysConverter keysConverter = new KeysConverter();
@@ -489,17 +481,17 @@ namespace AutoDefect.View
             await connection.ConnectToServerAsync();
         }
 
-        private void textBoxSerial_TextChanged(object sender, EventArgs e)
-        {
-            if (!disableEvent)
-            {
-                if (textBoxSerial.Text != null)
-                {
-                    textBoxStatus.Text = "...";
-                    textBoxStatus.BackColor = Color.Orange;
-                }
-            }
-        }
+        //private void textBoxSerial_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (!disableEvent)
+        //    {
+        //        if (textBoxSerial.Text != null)
+        //        {
+        //            textBoxStatus.Text = "Hasil scan tidak terbaca";
+        //            textBoxStatus.BackColor = Color.Orange;
+        //        }
+        //    }
+        //}
 
         private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
         {

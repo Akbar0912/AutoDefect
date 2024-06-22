@@ -152,8 +152,8 @@ namespace AutoDefect.View
             printPreviewDialog.Document = pd;
 
             // Menampilkan dialog preview cetak
-            printPreviewDialog.ShowDialog();
-            //pd.Print();
+            //printPreviewDialog.ShowDialog();
+            pd.Print();
         }
 
         private static DetailDefectView instance;
