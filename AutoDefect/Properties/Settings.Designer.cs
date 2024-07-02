@@ -117,5 +117,17 @@ namespace AutoDefect.Properties {
                 this["LocationID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PrinterType {
+            get {
+                return ((string)(this["PrinterType"]));
+            }
+            set {
+                this["PrinterType"] = value;
+            }
+        }
     }
 }

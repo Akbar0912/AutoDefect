@@ -39,13 +39,14 @@
             tableLayoutPanel4 = new TableLayoutPanel();
             dataGridView1 = new DataGridView();
             No = new DataGridViewTextBoxColumn();
+            tableLayoutPanel10 = new TableLayoutPanel();
             Panel3 = new TableLayoutPanel();
+            btnF = new Component.RdButton();
             btnA = new Component.RdButton();
             btnB = new Component.RdButton();
             btnC = new Component.RdButton();
             btnD = new Component.RdButton();
             btnE = new Component.RdButton();
-            btnF = new Component.RdButton();
             btnG = new Component.RdButton();
             btnH = new Component.RdButton();
             btnI = new Component.RdButton();
@@ -66,6 +67,8 @@
             btnX = new Component.RdButton();
             btnY = new Component.RdButton();
             btnZ = new Component.RdButton();
+            Panel11 = new TableLayoutPanel();
+            btnTop = new Component.RdButton();
             tableLayoutPanel2 = new TableLayoutPanel();
             pictureBox5 = new PictureBox();
             label5 = new Label();
@@ -104,12 +107,19 @@
             textBoxSearch = new TextBox();
             pictureBox6 = new PictureBox();
             pictureBox7 = new PictureBox();
+            tabPage3 = new TabPage();
+            tableLayoutPanel12 = new TableLayoutPanel();
+            label8 = new Label();
+            tableLayoutPanel11 = new TableLayoutPanel();
+            label9 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tableLayoutPanel10.SuspendLayout();
             Panel3.SuspendLayout();
+            Panel11.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -127,12 +137,16 @@
             tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            tabPage3.SuspendLayout();
+            tableLayoutPanel12.SuspendLayout();
+            tableLayoutPanel11.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
@@ -143,7 +157,7 @@
             // tabPage1
             // 
             tabPage1.Controls.Add(tableLayoutPanel4);
-            tabPage1.Controls.Add(Panel3);
+            tabPage1.Controls.Add(tableLayoutPanel10);
             tabPage1.Controls.Add(tableLayoutPanel2);
             tabPage1.Controls.Add(tableLayoutPanel1);
             tabPage1.Location = new Point(4, 24);
@@ -160,12 +174,12 @@
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.Controls.Add(dataGridView1, 0, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 242);
+            tableLayoutPanel4.Location = new Point(3, 252);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new Size(1543, 434);
+            tableLayoutPanel4.Size = new Size(1543, 424);
             tableLayoutPanel4.TabIndex = 3;
             // 
             // dataGridView1
@@ -180,7 +194,7 @@
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(1537, 428);
+            dataGridView1.Size = new Size(1537, 418);
             dataGridView1.TabIndex = 0;
             // 
             // No
@@ -192,6 +206,23 @@
             No.ReadOnly = true;
             No.Resizable = DataGridViewTriState.False;
             No.Width = 50;
+            // 
+            // tableLayoutPanel10
+            // 
+            tableLayoutPanel10.ColumnCount = 2;
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.323396F));
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 92.6766052F));
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel10.Controls.Add(Panel3, 1, 0);
+            tableLayoutPanel10.Controls.Add(Panel11, 0, 0);
+            tableLayoutPanel10.Dock = DockStyle.Top;
+            tableLayoutPanel10.Location = new Point(3, 152);
+            tableLayoutPanel10.Margin = new Padding(0);
+            tableLayoutPanel10.Name = "tableLayoutPanel10";
+            tableLayoutPanel10.RowCount = 1;
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel10.Size = new Size(1543, 100);
+            tableLayoutPanel10.TabIndex = 4;
             // 
             // Panel3
             // 
@@ -209,12 +240,12 @@
             Panel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.69230747F));
             Panel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.69230747F));
             Panel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.69230747F));
+            Panel3.Controls.Add(btnF, 5, 0);
             Panel3.Controls.Add(btnA, 0, 0);
             Panel3.Controls.Add(btnB, 1, 0);
             Panel3.Controls.Add(btnC, 2, 0);
             Panel3.Controls.Add(btnD, 3, 0);
             Panel3.Controls.Add(btnE, 4, 0);
-            Panel3.Controls.Add(btnF, 5, 0);
             Panel3.Controls.Add(btnG, 6, 0);
             Panel3.Controls.Add(btnH, 7, 0);
             Panel3.Controls.Add(btnI, 8, 0);
@@ -235,15 +266,37 @@
             Panel3.Controls.Add(btnX, 10, 1);
             Panel3.Controls.Add(btnY, 11, 1);
             Panel3.Controls.Add(btnZ, 12, 1);
-            Panel3.Dock = DockStyle.Top;
-            Panel3.Location = new Point(3, 152);
-            Panel3.Margin = new Padding(3, 3, 3, 0);
+            Panel3.Dock = DockStyle.Fill;
+            Panel3.Location = new Point(113, 0);
+            Panel3.Margin = new Padding(0, 0, 3, 0);
             Panel3.Name = "Panel3";
             Panel3.RowCount = 2;
             Panel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             Panel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            Panel3.Size = new Size(1543, 90);
+            Panel3.Size = new Size(1427, 100);
             Panel3.TabIndex = 2;
+            // 
+            // btnF
+            // 
+            btnF.BackColor = Color.FromArgb(77, 134, 156);
+            btnF.BackgroundColor = Color.FromArgb(77, 134, 156);
+            btnF.BorderColor = Color.PaleVioletRed;
+            btnF.BorderRadius = 6;
+            btnF.BorderSize = 0;
+            btnF.Dock = DockStyle.Fill;
+            btnF.FlatAppearance.BorderSize = 0;
+            btnF.FlatStyle = FlatStyle.Flat;
+            btnF.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnF.ForeColor = Color.White;
+            btnF.Location = new Point(548, 3);
+            btnF.Margin = new Padding(3, 3, 3, 0);
+            btnF.Name = "btnF";
+            btnF.Size = new Size(103, 47);
+            btnF.TabIndex = 0;
+            btnF.Tag = "6";
+            btnF.Text = "F";
+            btnF.TextColor = Color.White;
+            btnF.UseVisualStyleBackColor = false;
             // 
             // btnA
             // 
@@ -260,7 +313,7 @@
             btnA.Location = new Point(3, 3);
             btnA.Margin = new Padding(3, 3, 3, 0);
             btnA.Name = "btnA";
-            btnA.Size = new Size(112, 42);
+            btnA.Size = new Size(103, 47);
             btnA.TabIndex = 0;
             btnA.Tag = "1";
             btnA.Text = "A";
@@ -279,10 +332,10 @@
             btnB.FlatStyle = FlatStyle.Flat;
             btnB.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnB.ForeColor = Color.White;
-            btnB.Location = new Point(121, 3);
+            btnB.Location = new Point(112, 3);
             btnB.Margin = new Padding(3, 3, 3, 0);
             btnB.Name = "btnB";
-            btnB.Size = new Size(112, 42);
+            btnB.Size = new Size(103, 47);
             btnB.TabIndex = 0;
             btnB.Tag = "2";
             btnB.Text = "B";
@@ -301,10 +354,10 @@
             btnC.FlatStyle = FlatStyle.Flat;
             btnC.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnC.ForeColor = Color.White;
-            btnC.Location = new Point(239, 3);
+            btnC.Location = new Point(221, 3);
             btnC.Margin = new Padding(3, 3, 3, 0);
             btnC.Name = "btnC";
-            btnC.Size = new Size(112, 42);
+            btnC.Size = new Size(103, 47);
             btnC.TabIndex = 0;
             btnC.Tag = "3";
             btnC.Text = "C";
@@ -323,10 +376,10 @@
             btnD.FlatStyle = FlatStyle.Flat;
             btnD.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnD.ForeColor = Color.White;
-            btnD.Location = new Point(357, 3);
+            btnD.Location = new Point(330, 3);
             btnD.Margin = new Padding(3, 3, 3, 0);
             btnD.Name = "btnD";
-            btnD.Size = new Size(112, 42);
+            btnD.Size = new Size(103, 47);
             btnD.TabIndex = 0;
             btnD.Tag = "4";
             btnD.Text = "D";
@@ -345,37 +398,15 @@
             btnE.FlatStyle = FlatStyle.Flat;
             btnE.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnE.ForeColor = Color.White;
-            btnE.Location = new Point(475, 3);
+            btnE.Location = new Point(439, 3);
             btnE.Margin = new Padding(3, 3, 3, 0);
             btnE.Name = "btnE";
-            btnE.Size = new Size(112, 42);
+            btnE.Size = new Size(103, 47);
             btnE.TabIndex = 0;
             btnE.Tag = "5";
             btnE.Text = "E";
             btnE.TextColor = Color.White;
             btnE.UseVisualStyleBackColor = false;
-            // 
-            // btnF
-            // 
-            btnF.BackColor = Color.FromArgb(77, 134, 156);
-            btnF.BackgroundColor = Color.FromArgb(77, 134, 156);
-            btnF.BorderColor = Color.PaleVioletRed;
-            btnF.BorderRadius = 6;
-            btnF.BorderSize = 0;
-            btnF.Dock = DockStyle.Fill;
-            btnF.FlatAppearance.BorderSize = 0;
-            btnF.FlatStyle = FlatStyle.Flat;
-            btnF.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnF.ForeColor = Color.White;
-            btnF.Location = new Point(593, 3);
-            btnF.Margin = new Padding(3, 3, 3, 0);
-            btnF.Name = "btnF";
-            btnF.Size = new Size(112, 42);
-            btnF.TabIndex = 0;
-            btnF.Tag = "6";
-            btnF.Text = "F";
-            btnF.TextColor = Color.White;
-            btnF.UseVisualStyleBackColor = false;
             // 
             // btnG
             // 
@@ -389,10 +420,10 @@
             btnG.FlatStyle = FlatStyle.Flat;
             btnG.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnG.ForeColor = Color.White;
-            btnG.Location = new Point(711, 3);
+            btnG.Location = new Point(657, 3);
             btnG.Margin = new Padding(3, 3, 3, 0);
             btnG.Name = "btnG";
-            btnG.Size = new Size(112, 42);
+            btnG.Size = new Size(103, 47);
             btnG.TabIndex = 0;
             btnG.Tag = "7";
             btnG.Text = "G";
@@ -411,10 +442,10 @@
             btnH.FlatStyle = FlatStyle.Flat;
             btnH.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnH.ForeColor = Color.White;
-            btnH.Location = new Point(829, 3);
+            btnH.Location = new Point(766, 3);
             btnH.Margin = new Padding(3, 3, 3, 0);
             btnH.Name = "btnH";
-            btnH.Size = new Size(112, 42);
+            btnH.Size = new Size(103, 47);
             btnH.TabIndex = 0;
             btnH.Tag = "8";
             btnH.Text = "H";
@@ -433,10 +464,10 @@
             btnI.FlatStyle = FlatStyle.Flat;
             btnI.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnI.ForeColor = Color.White;
-            btnI.Location = new Point(947, 3);
+            btnI.Location = new Point(875, 3);
             btnI.Margin = new Padding(3, 3, 3, 0);
             btnI.Name = "btnI";
-            btnI.Size = new Size(112, 42);
+            btnI.Size = new Size(103, 47);
             btnI.TabIndex = 0;
             btnI.Tag = "9";
             btnI.Text = "I";
@@ -455,10 +486,10 @@
             btnJ.FlatStyle = FlatStyle.Flat;
             btnJ.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnJ.ForeColor = Color.White;
-            btnJ.Location = new Point(1065, 3);
+            btnJ.Location = new Point(984, 3);
             btnJ.Margin = new Padding(3, 3, 3, 0);
             btnJ.Name = "btnJ";
-            btnJ.Size = new Size(112, 42);
+            btnJ.Size = new Size(103, 47);
             btnJ.TabIndex = 0;
             btnJ.Tag = "10";
             btnJ.Text = "J";
@@ -477,10 +508,10 @@
             btnK.FlatStyle = FlatStyle.Flat;
             btnK.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnK.ForeColor = Color.White;
-            btnK.Location = new Point(1183, 3);
+            btnK.Location = new Point(1093, 3);
             btnK.Margin = new Padding(3, 3, 3, 0);
             btnK.Name = "btnK";
-            btnK.Size = new Size(112, 42);
+            btnK.Size = new Size(103, 47);
             btnK.TabIndex = 0;
             btnK.Tag = "11";
             btnK.Text = "K";
@@ -499,10 +530,10 @@
             btnL.FlatStyle = FlatStyle.Flat;
             btnL.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnL.ForeColor = Color.White;
-            btnL.Location = new Point(1301, 3);
+            btnL.Location = new Point(1202, 3);
             btnL.Margin = new Padding(3, 3, 3, 0);
             btnL.Name = "btnL";
-            btnL.Size = new Size(112, 42);
+            btnL.Size = new Size(103, 47);
             btnL.TabIndex = 0;
             btnL.Tag = "12";
             btnL.Text = "L";
@@ -521,10 +552,10 @@
             btnM.FlatStyle = FlatStyle.Flat;
             btnM.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnM.ForeColor = Color.White;
-            btnM.Location = new Point(1419, 3);
+            btnM.Location = new Point(1311, 3);
             btnM.Margin = new Padding(3, 3, 3, 0);
             btnM.Name = "btnM";
-            btnM.Size = new Size(121, 42);
+            btnM.Size = new Size(113, 47);
             btnM.TabIndex = 0;
             btnM.Tag = "13";
             btnM.Text = "M";
@@ -543,10 +574,10 @@
             btnN.FlatStyle = FlatStyle.Flat;
             btnN.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnN.ForeColor = Color.White;
-            btnN.Location = new Point(3, 48);
+            btnN.Location = new Point(3, 53);
             btnN.Margin = new Padding(3, 3, 3, 0);
             btnN.Name = "btnN";
-            btnN.Size = new Size(112, 42);
+            btnN.Size = new Size(103, 47);
             btnN.TabIndex = 0;
             btnN.Tag = "14";
             btnN.Text = "N";
@@ -565,10 +596,10 @@
             btnO.FlatStyle = FlatStyle.Flat;
             btnO.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnO.ForeColor = Color.White;
-            btnO.Location = new Point(121, 48);
+            btnO.Location = new Point(112, 53);
             btnO.Margin = new Padding(3, 3, 3, 0);
             btnO.Name = "btnO";
-            btnO.Size = new Size(112, 42);
+            btnO.Size = new Size(103, 47);
             btnO.TabIndex = 0;
             btnO.Tag = "15";
             btnO.Text = "O";
@@ -587,10 +618,10 @@
             btnP.FlatStyle = FlatStyle.Flat;
             btnP.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnP.ForeColor = Color.White;
-            btnP.Location = new Point(239, 48);
+            btnP.Location = new Point(221, 53);
             btnP.Margin = new Padding(3, 3, 3, 0);
             btnP.Name = "btnP";
-            btnP.Size = new Size(112, 42);
+            btnP.Size = new Size(103, 47);
             btnP.TabIndex = 0;
             btnP.Tag = "16";
             btnP.Text = "P";
@@ -609,10 +640,10 @@
             btnQ.FlatStyle = FlatStyle.Flat;
             btnQ.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnQ.ForeColor = Color.White;
-            btnQ.Location = new Point(357, 48);
+            btnQ.Location = new Point(330, 53);
             btnQ.Margin = new Padding(3, 3, 3, 0);
             btnQ.Name = "btnQ";
-            btnQ.Size = new Size(112, 42);
+            btnQ.Size = new Size(103, 47);
             btnQ.TabIndex = 0;
             btnQ.Tag = "17";
             btnQ.Text = "Q";
@@ -631,10 +662,10 @@
             btnR.FlatStyle = FlatStyle.Flat;
             btnR.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnR.ForeColor = Color.White;
-            btnR.Location = new Point(475, 48);
+            btnR.Location = new Point(439, 53);
             btnR.Margin = new Padding(3, 3, 3, 0);
             btnR.Name = "btnR";
-            btnR.Size = new Size(112, 42);
+            btnR.Size = new Size(103, 47);
             btnR.TabIndex = 0;
             btnR.Tag = "18";
             btnR.Text = "R";
@@ -653,10 +684,10 @@
             btnS.FlatStyle = FlatStyle.Flat;
             btnS.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnS.ForeColor = Color.White;
-            btnS.Location = new Point(593, 48);
+            btnS.Location = new Point(548, 53);
             btnS.Margin = new Padding(3, 3, 3, 0);
             btnS.Name = "btnS";
-            btnS.Size = new Size(112, 42);
+            btnS.Size = new Size(103, 47);
             btnS.TabIndex = 0;
             btnS.Tag = "19";
             btnS.Text = "S";
@@ -675,10 +706,10 @@
             btnT.FlatStyle = FlatStyle.Flat;
             btnT.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnT.ForeColor = Color.White;
-            btnT.Location = new Point(711, 48);
+            btnT.Location = new Point(657, 53);
             btnT.Margin = new Padding(3, 3, 3, 0);
             btnT.Name = "btnT";
-            btnT.Size = new Size(112, 42);
+            btnT.Size = new Size(103, 47);
             btnT.TabIndex = 0;
             btnT.Tag = "20";
             btnT.Text = "T";
@@ -697,10 +728,10 @@
             btnU.FlatStyle = FlatStyle.Flat;
             btnU.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnU.ForeColor = Color.White;
-            btnU.Location = new Point(829, 48);
+            btnU.Location = new Point(766, 53);
             btnU.Margin = new Padding(3, 3, 3, 0);
             btnU.Name = "btnU";
-            btnU.Size = new Size(112, 42);
+            btnU.Size = new Size(103, 47);
             btnU.TabIndex = 0;
             btnU.Tag = "21";
             btnU.Text = "U";
@@ -719,10 +750,10 @@
             btnV.FlatStyle = FlatStyle.Flat;
             btnV.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnV.ForeColor = Color.White;
-            btnV.Location = new Point(947, 48);
+            btnV.Location = new Point(875, 53);
             btnV.Margin = new Padding(3, 3, 3, 0);
             btnV.Name = "btnV";
-            btnV.Size = new Size(112, 42);
+            btnV.Size = new Size(103, 47);
             btnV.TabIndex = 0;
             btnV.Tag = "22";
             btnV.Text = "V";
@@ -741,10 +772,10 @@
             btnW.FlatStyle = FlatStyle.Flat;
             btnW.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnW.ForeColor = Color.White;
-            btnW.Location = new Point(1065, 48);
+            btnW.Location = new Point(984, 53);
             btnW.Margin = new Padding(3, 3, 3, 0);
             btnW.Name = "btnW";
-            btnW.Size = new Size(112, 42);
+            btnW.Size = new Size(103, 47);
             btnW.TabIndex = 0;
             btnW.Tag = "23";
             btnW.Text = "W";
@@ -763,10 +794,10 @@
             btnX.FlatStyle = FlatStyle.Flat;
             btnX.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnX.ForeColor = Color.White;
-            btnX.Location = new Point(1183, 48);
+            btnX.Location = new Point(1093, 53);
             btnX.Margin = new Padding(3, 3, 3, 0);
             btnX.Name = "btnX";
-            btnX.Size = new Size(112, 42);
+            btnX.Size = new Size(103, 47);
             btnX.TabIndex = 0;
             btnX.Tag = "24";
             btnX.Text = "X";
@@ -785,10 +816,10 @@
             btnY.FlatStyle = FlatStyle.Flat;
             btnY.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnY.ForeColor = Color.White;
-            btnY.Location = new Point(1301, 48);
+            btnY.Location = new Point(1202, 53);
             btnY.Margin = new Padding(3, 3, 3, 0);
             btnY.Name = "btnY";
-            btnY.Size = new Size(112, 42);
+            btnY.Size = new Size(103, 47);
             btnY.TabIndex = 0;
             btnY.Tag = "25";
             btnY.Text = "Y";
@@ -807,15 +838,51 @@
             btnZ.FlatStyle = FlatStyle.Flat;
             btnZ.Font = new Font("Arial", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnZ.ForeColor = Color.White;
-            btnZ.Location = new Point(1419, 48);
+            btnZ.Location = new Point(1311, 53);
             btnZ.Margin = new Padding(3, 3, 3, 0);
             btnZ.Name = "btnZ";
-            btnZ.Size = new Size(121, 42);
+            btnZ.Size = new Size(113, 47);
             btnZ.TabIndex = 0;
             btnZ.Tag = "26";
             btnZ.Text = "Z";
             btnZ.TextColor = Color.White;
             btnZ.UseVisualStyleBackColor = false;
+            // 
+            // Panel11
+            // 
+            Panel11.ColumnCount = 1;
+            Panel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            Panel11.Controls.Add(btnTop, 0, 0);
+            Panel11.Dock = DockStyle.Fill;
+            Panel11.Location = new Point(0, 0);
+            Panel11.Margin = new Padding(0);
+            Panel11.Name = "Panel11";
+            Panel11.RowCount = 1;
+            Panel11.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            Panel11.Size = new Size(113, 100);
+            Panel11.TabIndex = 3;
+            // 
+            // btnTop
+            // 
+            btnTop.BackColor = Color.FromArgb(77, 134, 156);
+            btnTop.BackgroundColor = Color.FromArgb(77, 134, 156);
+            btnTop.BorderColor = Color.PaleVioletRed;
+            btnTop.BorderRadius = 8;
+            btnTop.BorderSize = 0;
+            btnTop.Dock = DockStyle.Fill;
+            btnTop.FlatAppearance.BorderSize = 0;
+            btnTop.FlatStyle = FlatStyle.Flat;
+            btnTop.Font = new Font("Arial", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTop.ForeColor = Color.White;
+            btnTop.Location = new Point(3, 3);
+            btnTop.Margin = new Padding(3, 3, 3, 0);
+            btnTop.Name = "btnTop";
+            btnTop.Size = new Size(107, 97);
+            btnTop.TabIndex = 0;
+            btnTop.Tag = "0";
+            btnTop.Text = "Top Defect";
+            btnTop.TextColor = Color.White;
+            btnTop.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel2
             // 
@@ -839,8 +906,9 @@
             // 
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
             pictureBox5.Location = new Point(3, 3);
+            pictureBox5.Margin = new Padding(3, 3, 0, 3);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(24, 42);
+            pictureBox5.Size = new Size(28, 42);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox5.TabIndex = 0;
             pictureBox5.TabStop = false;
@@ -1377,6 +1445,72 @@
             pictureBox7.TabIndex = 7;
             pictureBox7.TabStop = false;
             // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(tableLayoutPanel12);
+            tabPage3.Controls.Add(tableLayoutPanel11);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(1549, 679);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "tabPage3";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel12
+            // 
+            tableLayoutPanel12.ColumnCount = 1;
+            tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel12.Controls.Add(label8, 0, 0);
+            tableLayoutPanel12.Dock = DockStyle.Fill;
+            tableLayoutPanel12.Location = new Point(3, 59);
+            tableLayoutPanel12.Name = "tableLayoutPanel12";
+            tableLayoutPanel12.RowCount = 1;
+            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel12.Size = new Size(1543, 617);
+            tableLayoutPanel12.TabIndex = 15;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Dock = DockStyle.Top;
+            label8.Font = new Font("Helvetica", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(3, 0);
+            label8.Name = "label8";
+            label8.Padding = new Padding(0, 50, 0, 0);
+            label8.Size = new Size(1537, 116);
+            label8.TabIndex = 0;
+            label8.Text = "Copyright © 2024 \r\nPoliteknik Elektronika Negeri Surabaya and\r\nPT. Panasonic Manufactur, All right reserved.";
+            label8.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel11
+            // 
+            tableLayoutPanel11.BackColor = Color.Teal;
+            tableLayoutPanel11.ColumnCount = 1;
+            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel11.Controls.Add(label9, 0, 0);
+            tableLayoutPanel11.Dock = DockStyle.Top;
+            tableLayoutPanel11.Location = new Point(3, 3);
+            tableLayoutPanel11.Margin = new Padding(0);
+            tableLayoutPanel11.Name = "tableLayoutPanel11";
+            tableLayoutPanel11.RowCount = 1;
+            tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel11.Size = new Size(1543, 56);
+            tableLayoutPanel11.TabIndex = 14;
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.Left;
+            label9.AutoSize = true;
+            label9.Font = new Font("Helvetica", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(3, 15);
+            label9.Name = "label9";
+            label9.Padding = new Padding(50, 0, 0, 0);
+            label9.Size = new Size(157, 25);
+            label9.TabIndex = 0;
+            label9.Text = "About Us";
+            // 
             // TabControlView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1389,7 +1523,9 @@
             tabPage1.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tableLayoutPanel10.ResumeLayout(false);
             Panel3.ResumeLayout(false);
+            Panel11.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
@@ -1412,6 +1548,11 @@
             tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            tabPage3.ResumeLayout(false);
+            tableLayoutPanel12.ResumeLayout(false);
+            tableLayoutPanel12.PerformLayout();
+            tableLayoutPanel11.ResumeLayout(false);
+            tableLayoutPanel11.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1488,5 +1629,13 @@
         private PictureBox pictureBox6;
         private PictureBox pictureBox7;
         private DataGridViewTextBoxColumn No;
+        private TableLayoutPanel tableLayoutPanel10;
+        private TableLayoutPanel Panel11;
+        private Component.RdButton btnTop;
+        private TabPage tabPage3;
+        private TableLayoutPanel tableLayoutPanel11;
+        private Label label9;
+        private TableLayoutPanel tableLayoutPanel12;
+        private Label label8;
     }
 }

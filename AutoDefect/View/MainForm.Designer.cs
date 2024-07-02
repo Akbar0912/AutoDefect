@@ -33,6 +33,7 @@
             label2 = new Label();
             label1 = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
+            btnAbtUs = new Button();
             btnLogOut = new Button();
             btnRePrint = new Button();
             btnHome = new Button();
@@ -97,7 +98,8 @@
             tableLayoutPanel4.BackColor = Color.Teal;
             tableLayoutPanel4.ColumnCount = 1;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Controls.Add(btnLogOut, 0, 6);
+            tableLayoutPanel4.Controls.Add(btnAbtUs, 0, 6);
+            tableLayoutPanel4.Controls.Add(btnLogOut, 0, 7);
             tableLayoutPanel4.Controls.Add(btnRePrint, 0, 2);
             tableLayoutPanel4.Controls.Add(btnHome, 0, 0);
             tableLayoutPanel4.Controls.Add(btnSetting, 0, 4);
@@ -105,17 +107,35 @@
             tableLayoutPanel4.Location = new Point(0, 0);
             tableLayoutPanel4.Margin = new Padding(3, 0, 3, 5);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 8;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 11.7647057F));
+            tableLayoutPanel4.RowCount = 9;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 9.243697F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 1.04220247F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 12.6559715F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 9.663865F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 1.30275321F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 9.982175F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50.80214F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 12.6559715F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 10.2941179F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 57.9831924F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 10.7142859F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 86F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel4.Size = new Size(103, 584);
             tableLayoutPanel4.TabIndex = 0;
+            // 
+            // btnAbtUs
+            // 
+            btnAbtUs.Dock = DockStyle.Fill;
+            btnAbtUs.FlatAppearance.BorderSize = 0;
+            btnAbtUs.FlatStyle = FlatStyle.Flat;
+            btnAbtUs.Font = new Font("Helvetica", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAbtUs.ForeColor = Color.White;
+            btnAbtUs.Image = (Image)resources.GetObject("btnAbtUs.Image");
+            btnAbtUs.Location = new Point(3, 428);
+            btnAbtUs.Name = "btnAbtUs";
+            btnAbtUs.Size = new Size(97, 45);
+            btnAbtUs.TabIndex = 5;
+            btnAbtUs.Text = "\r\nAbout";
+            btnAbtUs.TextAlign = ContentAlignment.BottomCenter;
+            btnAbtUs.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnAbtUs.UseVisualStyleBackColor = true;
             // 
             // btnLogOut
             // 
@@ -126,10 +146,10 @@
             btnLogOut.Font = new Font("Helvetica", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogOut.ForeColor = Color.White;
             btnLogOut.Image = (Image)resources.GetObject("btnLogOut.Image");
-            btnLogOut.Location = new Point(3, 493);
+            btnLogOut.Location = new Point(3, 479);
             btnLogOut.Name = "btnLogOut";
             btnLogOut.Padding = new Padding(0, 9, 0, 0);
-            btnLogOut.Size = new Size(97, 65);
+            btnLogOut.Size = new Size(97, 80);
             btnLogOut.TabIndex = 4;
             btnLogOut.Text = "Log Out";
             btnLogOut.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -143,11 +163,11 @@
             btnRePrint.Font = new Font("Helvetica", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRePrint.ForeColor = Color.White;
             btnRePrint.Image = (Image)resources.GetObject("btnRePrint.Image");
-            btnRePrint.Location = new Point(3, 74);
+            btnRePrint.Location = new Point(3, 51);
             btnRePrint.Name = "btnRePrint";
-            btnRePrint.Size = new Size(97, 65);
+            btnRePrint.Size = new Size(97, 40);
             btnRePrint.TabIndex = 3;
-            btnRePrint.Text = "\r\nRecord Defect";
+            btnRePrint.Text = "\r\nRecord";
             btnRePrint.TextAlign = ContentAlignment.BottomCenter;
             btnRePrint.TextImageRelation = TextImageRelation.ImageAboveText;
             btnRePrint.UseVisualStyleBackColor = true;
@@ -164,9 +184,9 @@
             btnHome.Location = new Point(0, 0);
             btnHome.Margin = new Padding(0);
             btnHome.Name = "btnHome";
-            btnHome.Size = new Size(103, 66);
+            btnHome.Size = new Size(103, 44);
             btnHome.TabIndex = 2;
-            btnHome.Text = "\r\nPrint Defect";
+            btnHome.Text = "\r\nHome";
             btnHome.TextAlign = ContentAlignment.BottomCenter;
             btnHome.TextImageRelation = TextImageRelation.ImageAboveText;
             btnHome.UseVisualStyleBackColor = false;
@@ -179,9 +199,9 @@
             btnSetting.Font = new Font("Helvetica", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSetting.ForeColor = Color.White;
             btnSetting.Image = (Image)resources.GetObject("btnSetting.Image");
-            btnSetting.Location = new Point(3, 152);
+            btnSetting.Location = new Point(3, 103);
             btnSetting.Name = "btnSetting";
-            btnSetting.Size = new Size(97, 50);
+            btnSetting.Size = new Size(97, 43);
             btnSetting.TabIndex = 1;
             btnSetting.Text = "\r\nSetting";
             btnSetting.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -190,6 +210,7 @@
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.IsSplitterFixed = true;
             splitContainer1.Location = new Point(0, 89);
             splitContainer1.Margin = new Padding(0);
             splitContainer1.Name = "splitContainer1";
@@ -237,5 +258,6 @@
         private Button btnHome;
         private Button btnSetting;
         private SplitContainer splitContainer1;
+        private Button btnAbtUs;
     }
 }

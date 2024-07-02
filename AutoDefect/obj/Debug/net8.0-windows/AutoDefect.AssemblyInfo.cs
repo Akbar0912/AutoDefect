@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoDefect")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfd5346508c470b31d0cf89601ab99d51338ac19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3977d10f5de0363f0751995f55079a29cc7a1048")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoDefect")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoDefect")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace AutoDefect.View
         private PrintModeModel printMode;
         private PrintLayout _printLayout;
         private TabControlView tabControl;
+        private PrinterTypeModel _printerType;
         private string modelCode;
         private int defectId;
         private int partId;
@@ -34,46 +36,48 @@ namespace AutoDefect.View
             defectResult = new DefectResultModel();  // Inisialisasi defectResult
             _printLayout = new PrintLayout(new ModelCode());
             tabControl = new TabControlView();
+            _printerType = new PrinterTypeModel();
             AssociateAndRaiseViewEvents();
+
         }
 
 
-        public string SerialNumber 
+        public string SerialNumber
         {
             get { return textSerial.Text; }
             set { textSerial.Text = value; }
         }
-        public string ModelCode 
+        public string ModelCode
         {
             get { return modelCode; }
             set { modelCode = value; }
         }
-        public string ModelNumber 
-        { 
+        public string ModelNumber
+        {
             get { return textModelNumber.Text; }
             set { textModelNumber.Text = value; }
         }
-        public int DefectId 
+        public int DefectId
         {
             get { return defectId; }
-            set {  defectId = value; }
+            set { defectId = value; }
         }
-        public string DefectName 
+        public string DefectName
         {
             get { return textDefect.Text; }
             set { textDefect.Text = value; }
         }
-        public string InspectorId 
+        public string InspectorId
         {
             get { return inspectorId; }
             set { inspectorId = value; }
         }
-        public string InspectorName 
+        public string InspectorName
         {
             get { return TextInspector.Text; }
             set { TextInspector.Text = value; }
         }
-        public string Message 
+        public string Message
         {
             get { return message; }
             set { message = value; }
@@ -82,17 +86,6 @@ namespace AutoDefect.View
         {
             get { return int.Parse(textLocation.Text); }
             set { textLocation.Text = value.ToString(); }
-        }
-
-        public int PartId 
-        {
-            get => partId;
-            set => partId = value;
-        }
-        public string PartName 
-        {
-            get => labelPart.Text; 
-            set => labelPart.Text = value;
         }
 
         public event EventHandler SaveEvent;
@@ -111,7 +104,7 @@ namespace AutoDefect.View
                 string mode = printMode.GetMode();
 
                 SaveEvent?.Invoke(this, EventArgs.Empty);
-                if (mode == "on")
+                if (mode == "on" || mode == "preview")
                 {
 
                     defectResult.ModelNumber = ModelNumber;
@@ -121,8 +114,9 @@ namespace AutoDefect.View
                     defectResult.Inspector = InspectorName;
                     defectResult.Defect = DefectName;
 
-                    ShowPrintPreviewDialog(defectResult);
-                  
+                    string printerType = _printerType.GetPrinterType();
+                    ShowPrintPreviewDialog(defectResult,printerType);
+
                     this.Hide();
                 }
                 else
@@ -139,10 +133,18 @@ namespace AutoDefect.View
             };
         }
 
-        public void ShowPrintPreviewDialog(DefectResultModel defectResult)
+        public void ShowPrintPreviewDialog(DefectResultModel defectResult, string printerName)
         {
+            string mode = printMode.GetMode();
+            string printerType = _printerType.GetPrinterType();
+
             // Membuat PrintDocument baru
             PrintDocument pd = new PrintDocument();
+
+            if (!string.IsNullOrEmpty(printerName))
+            {
+                pd.PrinterSettings.PrinterName = printerName;
+            }
 
             // Menambahkan event handler untuk PrintPage
             pd.PrintPage += (s, e) => _printLayout.Print(e, defectResult);
@@ -151,9 +153,51 @@ namespace AutoDefect.View
             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
             printPreviewDialog.Document = pd;
 
-            // Menampilkan dialog preview cetak
-            //printPreviewDialog.ShowDialog();
-            pd.Print();
+            if (mode == "preview")
+            {
+                // Menampilkan dialog preview cetak
+                printPreviewDialog.Load += (s, e) =>
+                {
+                    // Mengakses PrintPreviewControl menggunakan refleksi
+                    PrintPreviewControl printPreviewControl = FindPrintPreviewControl(printPreviewDialog);
+
+                    if (printPreviewControl != null)
+                    {
+                        printPreviewControl.Zoom = 2.0; // Mengatur zoom 200%
+                    }
+
+                    // Mengatur posisi jendela ke tengah layar
+                    printPreviewDialog.StartPosition = FormStartPosition.CenterScreen;
+                    printPreviewDialog.WindowState = FormWindowState.Maximized;
+                };
+
+                // Menampilkan dialog preview cetak
+                printPreviewDialog.ShowDialog();
+            }
+            else
+            {
+                pd.Print();
+            }
+        }
+
+        private PrintPreviewControl FindPrintPreviewControl(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control is PrintPreviewControl previewControl)
+                {
+                    return previewControl;
+                }
+                else
+                {
+                    PrintPreviewControl foundControl = FindPrintPreviewControl(control);
+                    if (foundControl != null)
+                    {
+                        return foundControl;
+                    }
+                }
+            }
+            return null;
         }
 
         private static DetailDefectView instance;
@@ -168,6 +212,10 @@ namespace AutoDefect.View
                 instance.BringToFront();
             }
             return instance;
+        }
+
+        private void DetailDefectView_Load(object sender, EventArgs e)
+        {
         }
     }
 }

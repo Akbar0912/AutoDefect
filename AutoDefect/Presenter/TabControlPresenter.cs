@@ -36,7 +36,6 @@ namespace AutoDefect.Presenter
             this.view.SearchModelNumber += SearchModelNumber;
             this.view.ClearEvent += ClearAction;
             this.view.DefectFilterEvent += LoadFilterDefect;
-            //this.view.CellClicked += CellClicked;
             this.view.SearchFilter += SearchFilter;
             this.view.CheckProperties += CheckProperties;
 
@@ -108,7 +107,6 @@ namespace AutoDefect.Presenter
             }
             else
             {
-                //LoadAllDefectList();
                 defectList = defectRepository.GetAll();
             }
 
@@ -162,8 +160,6 @@ namespace AutoDefect.Presenter
                 ModelCode = view.ModelCode,
                 DefectId = defect.Id1,
                 DefectName = defect.DefectName1,
-                PartId = defect.PartId1,
-                PartName = defect.PartName1,
                 InspectorId = view.InspectorId,
                 Inspector = view.Inspector,
                 Location = Location

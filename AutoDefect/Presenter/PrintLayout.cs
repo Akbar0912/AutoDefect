@@ -41,21 +41,21 @@ namespace AutoDefect.Presenter
             e.Graphics.DrawString("Model", fs1, Brushes.Black, new PointF(xPos, yPos + 13));
             yPos += 13;
             e.Graphics.DrawString(":" + defectResult.ModelNumber, fs1, Brushes.Black, new PointF(xPos + 60, yPos));
-            e.Graphics.DrawString("................................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 3));
+            e.Graphics.DrawString(".............................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 3));
 
             // Data dalam tabel
             string[,] tableChecked = new string[3, 2] {
-                {" Reconfrim", "Checked"},
+                {" Reconfirm ", "Checked"},
                 {" ", " "},
                 {"", ""}
             };
 
-            int Width = 48;
+            int Width = 53;
             int Height = 30;
             int Height1 = 20; // Tinggi untuk baris pertama kolom 3
             int Height2 = 10; // Tinggi untuk baris kedua (lebih besar dari baris 1 dan 3) kolom 1
             int Height3 = 30; // Tinggi untuk baris ketiga kolom 2
-            int X = 183;
+            int X = 180;
             int Y = yPos;
             int y1 = 21;
 
@@ -101,21 +101,21 @@ namespace AutoDefect.Presenter
 
             e.Graphics.DrawString("SN             ", fs1, Brushes.Black, new PointF(xPos, yPos + 16));
             e.Graphics.DrawString(":" + defectResult.SerialNumber, fs1, Brushes.Black, new PointF(xPos + 60, yPos + 16));
-            e.Graphics.DrawString("................................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 20));
+            e.Graphics.DrawString(".............................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 20));
 
             e.Graphics.DrawString("Time             ", fs1, Brushes.Black, new PointF(xPos, yPos + 33));
             e.Graphics.DrawString(":" + defectResult.Time, fs1, Brushes.Black, new PointF(xPos + 60, yPos + 33));
-            e.Graphics.DrawString("................................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 37));
+            e.Graphics.DrawString(".............................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 37));
 
             // Gambar informasi serial number
             e.Graphics.DrawString("Date ", fs1, Brushes.Black, new PointF(xPos, yPos + 50));
             e.Graphics.DrawString(":" + defectResult.Date, fs1, Brushes.Black, new PointF(xPos + 60, yPos + 50));
-            e.Graphics.DrawString("................................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 54));
+            e.Graphics.DrawString(".............................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 54));
 
             // Gambar informasi inspeksi
-            e.Graphics.DrawString("Inspection          ", fs1, Brushes.Black, new PointF(xPos, yPos + 68));
+            e.Graphics.DrawString("Inspector          ", fs1, Brushes.Black, new PointF(xPos, yPos + 68));
             e.Graphics.DrawString(":" + defectResult.Inspector, fs1, Brushes.Black, new PointF(xPos + 60, yPos + 68));
-            e.Graphics.DrawString("................................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 72));
+            e.Graphics.DrawString(".............................", fs1, Brushes.Black, new PointF(xPos + 64, yPos + 72));
 
             // Data dalam tabel
             string[,] tableData = new string[3, 2] {
@@ -157,13 +157,13 @@ namespace AutoDefect.Presenter
                     }
 
                     // Jika teks lebih dari karakter yang ditentukan, bagi menjadi beberapa baris
-                    if (text.Length > 38)
+                    if (text.Length > 48)
                     {
                         string[] lines = SplitTextIntoLines(text, 38); // Fungsi untuk membagi teks menjadi beberapa baris
                         for (int i = 0; i < lines.Length; i++)
                         {
                             e.Graphics.DrawString(lines[i], currentFont, Brushes.Black, new PointF(textX - 75, textY));
-                            e.Graphics.DrawString("............................................................", fs1, Brushes.Black, new PointF(textX - 75, textY + 3));
+                            e.Graphics.DrawString(".........................................................", fs1, Brushes.Black, new PointF(textX - 75, textY + 3));
                             textY += currentFont.GetHeight();
                         }
                     }
@@ -176,21 +176,21 @@ namespace AutoDefect.Presenter
                     // Jika di kolom kedua, tambahkan garis putus-putus
                     if (col == 1 && (row == 1 || row == 2))
                     {
-                        e.Graphics.DrawString("............................................................", fs1, Brushes.Black, new PointF(textX - 75, textY - 13));
-                        e.Graphics.DrawString("............................................................", fs1, Brushes.Black, new PointF(textX - 75, textY));
+                        e.Graphics.DrawString(".........................................................", fs1, Brushes.Black, new PointF(textX - 75, textY - 13));
+                        e.Graphics.DrawString(".........................................................", fs1, Brushes.Black, new PointF(textX - 75, textY));
                     }
                 }
             }
 
             // Membuat barcode dari model number dan serial number
-            string qrCode = $"{_modelCode.modelCode1}{defectResult.SerialNumber}";
+            string qrCode = $"{defectResult.SerialNumber}|{defectResult.ModelNumber}|{defectResult.Defect}|{defectResult.Inspector}|{defectResult.time}|{defectResult.Date}";
             BarcodeWriter<Bitmap> barcodeWriter = new BarcodeWriter<Bitmap>()
             {
                 Format = BarcodeFormat.QR_CODE,
                 Options = new EncodingOptions
                 {
-                    Width = 70,
-                    Height = 70,
+                    Width = 80,
+                    Height = 80,
                     Margin = 0
                 },
                 Renderer = new BitmapRenderer() // Atur renderer di sini

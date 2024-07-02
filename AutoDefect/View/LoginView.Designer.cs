@@ -88,7 +88,7 @@
             // 
             // hiddenPass
             // 
-            hiddenPass.Image = Properties.Resources.show__1_;
+            hiddenPass.Image = Properties.Resources.eye;
             hiddenPass.Location = new Point(566, 255);
             hiddenPass.Name = "hiddenPass";
             hiddenPass.Size = new Size(35, 31);

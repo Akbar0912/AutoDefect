@@ -14,6 +14,7 @@ namespace AutoDefect.Presenter
         private readonly SettingModel _model;
         private readonly LocationModel _smodel;
         private readonly PrintModeModel _printMode;
+        private readonly PrinterTypeModel _printerType;
 
         public SettingPresenter(ISettingView view, SettingModel model)
         {
@@ -21,6 +22,7 @@ namespace AutoDefect.Presenter
             _model = model;
             _smodel = new LocationModel();
             _printMode = new PrintModeModel();
+            _printerType = new PrinterTypeModel();
 
             _view.SelectedIndexChanged += View_SelectedIndexChanged;
             _view.SaveIPSettings += SaveIPSettings;
@@ -29,6 +31,26 @@ namespace AutoDefect.Presenter
             _view.LoadPort += View_LoadPort;
             _view.LoadLocation += View_LoadSettings;
             _view.HandleRadioButton += HandleRadioButton;
+            _view.SelectedPrinterType += SelectedPrinterType;
+            _view.LoadPrinterType += LoadPrinterType;
+        }
+
+        private void LoadPrinterType(object? sender, EventArgs e)
+        {
+            string loadedPrinter = _printerType.GetPrinterType();
+            _view.DsiplayPrinterType(loadedPrinter);
+        }
+
+        private void SelectedPrinterType(object? sender, EventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            string location = comboBox?.SelectedItem as string;
+
+            if (comboBox?.SelectedItem != null)
+            {
+                string selectedPrinter = comboBox.SelectedItem.ToString();
+                _printerType.SaveData(selectedPrinter);
+            }
         }
 
         private void HandleRadioButton(object? sender, EventArgs e)
@@ -37,18 +59,24 @@ namespace AutoDefect.Presenter
                 onRadio_Checked();
             else if (_view.mode == "off")
                 offRadio_Checked();
+            else if ( _view.mode == "preview")
+                previewRadio_Checked();
+        }
+
+        private void previewRadio_Checked()
+        {
+            _printMode.SaveData(_view.mode);
         }
 
         private void offRadio_Checked()
         {
             _printMode.SaveData(_view.mode);
-            MessageBox.Show(_view.mode);
         }
 
         private void onRadio_Checked()
         {
             _printMode.SaveData(_view.mode);
-            MessageBox.Show(_view.mode);
+           
         }
 
         private void View_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,8 +102,6 @@ namespace AutoDefect.Presenter
         private void View_LoadSettings(object sender, EventArgs e)
         {
             LoadLocationNames();
-            string loadedSetting = _model.LoadLocation();
-            _view.DisplaySetting(loadedSetting);
         }
         private void View_LoadIP(object sender, EventArgs e)
         {
@@ -102,8 +128,8 @@ namespace AutoDefect.Presenter
         {
             List<string> locationNames = _smodel.GetLocationNames();
             _view.LocationNames = locationNames;
-            //string loadedSetting = _model.LoadLocation();
-            //_view.DisplaySetting(loadedSetting);
+            string loadedSetting = _model.LoadLocation();
+            _view.DisplaySetting(loadedSetting);
         }
     }
 }

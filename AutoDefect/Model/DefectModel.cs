@@ -12,8 +12,6 @@ namespace AutoDefect.Model
     {
         //Fields
         private int Id;
-        private string PartName;
-        private int PartId;
         private string DefectName;
 
         //properties
@@ -23,19 +21,6 @@ namespace AutoDefect.Model
         {
             get => Id;
             set => Id = value;
-        }
-
-        [DisplayName("Part Name")]
-        public string PartName1 
-        { 
-            get => PartName; 
-            set => PartName = value; 
-        }
-        [Browsable(false)]
-        public int PartId1
-        {
-            get => PartId;
-            set => PartId = value;
         }
 
         [DisplayName("Defect Name")]

@@ -12,7 +12,6 @@ namespace AutoDefect.Model
         //Fields
         public string id;
         public string defect;
-        public string partName;
         public string modelNumber;
         public string modelCode;
         public string serialNumber;
@@ -36,12 +35,6 @@ namespace AutoDefect.Model
         {
             get => defect;
             set => defect = value;
-        }
-        [DisplayName("Part Name")]
-        public string PartName 
-        { 
-            get => partName; 
-            set => partName = value; 
         }
 
         [DisplayName("Model Number")]

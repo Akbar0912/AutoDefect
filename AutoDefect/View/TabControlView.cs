@@ -149,6 +149,12 @@ namespace AutoDefect.View
                 }
             };
 
+            btnTop.Click += delegate
+            {
+                ChangeColorButton(btnTop, null);
+                DefectFilterEvent?.Invoke(this, EventArgs.Empty, int.Parse(btnTop.Tag.ToString()));
+            };
+
             btnA.Click += delegate
             {
                 ChangeColorButton(btnA, null);
@@ -384,6 +390,10 @@ namespace AutoDefect.View
             {
                 c.BackColor = Color.FromArgb(77, 134, 156);
             }
+            foreach (Control c in Panel11.Controls)
+            {
+                c.BackColor = Color.FromArgb(77, 134, 156);
+            }
             Control click = (Control)sender;
             click.BackColor = Color.FromArgb(122, 178, 178);
         }
@@ -481,25 +491,12 @@ namespace AutoDefect.View
             await connection.ConnectToServerAsync();
         }
 
-        //private void textBoxSerial_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (!disableEvent)
-        //    {
-        //        if (textBoxSerial.Text != null)
-        //        {
-        //            textBoxStatus.Text = "Hasil scan tidak terbaca";
-        //            textBoxStatus.BackColor = Color.Orange;
-        //        }
-        //    }
-        //}
-
         private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 SearchFilter?.Invoke(sender, e);
             }
-
         }
 
         private void dt_KeyDown(object sender, KeyEventArgs e)

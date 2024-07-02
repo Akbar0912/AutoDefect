@@ -25,8 +25,6 @@ namespace AutoDefect.Presenter
             this._view.SaveEvent += SaveEvent;
             SetData(detailDefect);
             this._view.Show();
-
-
         }
 
         private void SaveEvent(object? sender, EventArgs e)
@@ -47,8 +45,6 @@ namespace AutoDefect.Presenter
                     _view.DefectName,
                     _view.InspectorId,
                     _view.InspectorName,
-                    _view.PartId,
-                    _view.PartName,
                     _view.Location,
                 };
                 repository.Add(model);
@@ -56,7 +52,7 @@ namespace AutoDefect.Presenter
 
                 _view.SaveEvent -= SaveEvent;
             }
-            else
+            else if (mode == "on")
             {
                 // Lakukan operasi save jika mode tidak off
                 var model = new
@@ -68,8 +64,6 @@ namespace AutoDefect.Presenter
                     _view.DefectName,
                     _view.InspectorId,
                     _view.InspectorName,
-                    _view.PartId,
-                    _view.PartName,
                     _view.Location,
                 };
                 repository.Add(model);
@@ -81,6 +75,11 @@ namespace AutoDefect.Presenter
                 _view.OnDataSaved();
 
                 _view.SaveEvent -= SaveEvent;
+            }else
+            {
+                _tabControl.StatusText = "Print dalam mode preview";
+                _tabControl.BackColorStatus = Color.Orange;
+                _tabControl.ForeColorStatus = Color.Black;
             }
         }
 
@@ -90,12 +89,10 @@ namespace AutoDefect.Presenter
             _view.ModelCode = detailDefect.ModelCode;
             _view.ModelNumber = detailDefect.ModelNumber;
             _view.DefectId = detailDefect.DefectId;
-            _view.DefectName = detailDefect.DefectName;
+            _view.DefectName =detailDefect.DefectName;
             _view.InspectorId = detailDefect.InspectorId;
             _view.InspectorName = detailDefect.Inspector;
             _view.Location = detailDefect.Location;
-            _view.PartId = detailDefect.PartId;
-            _view.PartName = detailDefect.PartName;
         }
     }
 }

@@ -58,12 +58,20 @@ namespace AutoDefect.View
                 btnHome.BackColor = Color.Teal;
             };
 
+            btnAbtUs.Click += delegate
+            {
+                int selectedTabPageIndex = 2;
+                tabControlPresenter.ChangeTabPage(selectedTabPageIndex);
+                btnAbtUs.BackColor = Color.FromArgb(77, 134, 156);
+                btnHome.BackColor = Color.Teal;
+                btnRePrint.BackColor = Color.Teal;
+            };
+
             btnLogOut.Click += delegate
             {
                 connection.CloseConnection();
 
                 tabControlPresenter.UnassociateViewEvents();
-                //ResetBinding();
 
                 this.Close();
 
@@ -72,11 +80,6 @@ namespace AutoDefect.View
                 (loginView as Form)?.Show();
             };
         }
-
-        //private void ResetBinding()
-        //{
-        //    tabControlPresenter.ResetDataBinding();
-        //}
 
         private void InitializeTabControl()
         {
@@ -95,16 +98,25 @@ namespace AutoDefect.View
 
         public static MainForm GetInstance(LoginModel loginModel)
         {
-            if (instance == null || instance.IsDisposed)
-                instance = new MainForm(loginModel);
-            else
+            // Dispose the old instance if it exists and is not disposed
+            if (instance != null && !instance.IsDisposed)
             {
-                if (instance.WindowState == FormWindowState.Minimized)
-                    instance.WindowState = FormWindowState.Normal;
-                instance.BringToFront();
-                instance._user = loginModel; // Set new user
+                instance.Dispose();
+            }
+
+            // Create a new instance
+            instance = new MainForm(loginModel);
+
+            // Set window state and bring to front if necessary
+            if (instance.WindowState == FormWindowState.Minimized)
+                instance.WindowState = FormWindowState.Normal;
+
+            if (instance._user != loginModel)
+            {
+                instance._user = loginModel;
                 instance.InitializeTabControl();
             }
+
             return instance;
         }
     }

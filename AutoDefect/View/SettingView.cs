@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace AutoDefect.View
 {
@@ -27,14 +28,41 @@ namespace AutoDefect.View
             InitializeEventHandler();
             _printMode = new PrintModeModel();
             LoadRadioSettings();
-            //Load += (sender, e) => LoadLocation?.Invoke(sender, e);
             Load += SettingView_Load;
+            LoadPrinters();
+        }
+
+        private void LoadPrinters()
+        {
+            try
+            {
+                // Clear existing items
+                printerBox.Items.Clear();
+
+                // Get the list of installed printers and add them to the ComboBox
+                foreach (string printer in PrinterSettings.InstalledPrinters)
+                {
+                    printerBox.Items.Add(printer);
+                }
+
+                // Optionally set the selected item to the default printer
+                PrinterSettings settings = new PrinterSettings();
+                if (printerBox.Items.Contains(settings.PrinterName))
+                {
+                    printerBox.SelectedItem = settings.PrinterName;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading printers: " + ex.Message);
+            }
         }
 
         private void LoadRadioSettings()
         {
             btnOn.Checked = Properties.Settings.Default.Mode == "on";
             btnOff.Checked = Properties.Settings.Default.Mode == "off";
+            btnPreview.Checked = Properties.Settings.Default.Mode == "preview";
         }
 
         public List<string> LocationNames
@@ -65,6 +93,8 @@ namespace AutoDefect.View
         public event EventHandler LoadPort;
         public event EventHandler LoadLocation;
         public event EventHandler HandleRadioButton;
+        public event EventHandler SelectedPrinterType;
+        public event EventHandler LoadPrinterType;
 
         public void DisplayIP(string IPaddress)
         {
@@ -141,9 +171,26 @@ namespace AutoDefect.View
                     HandleRadioButton?.Invoke(sender, e);
                 }
             };
+
+            btnPreview.CheckedChanged += (sender, e) =>
+            {
+                if (btnPreview.Checked && lastMode != "preview")
+                    mode = "preview";
+                lastMode = "preview";
+                HandleRadioButton?.Invoke(sender, e);
+            };
+
             btnClose.Click += delegate
             {
                 this.Close();
+            };
+
+            printerBox.SelectedIndexChanged += (sender, e) =>
+            {
+                if(!isInitializing)
+                {
+                    SelectedPrinterType?.Invoke(sender, e);
+                }
             };
         }
 
@@ -153,7 +200,13 @@ namespace AutoDefect.View
             LoadLocation?.Invoke(this, EventArgs.Empty);
             LoadIP?.Invoke(this, EventArgs.Empty);
             LoadPort?.Invoke(this, EventArgs.Empty);
+            LoadPrinterType?.Invoke(this, EventArgs.Empty);
             isInitializing = false;
+        }
+
+        public void DsiplayPrinterType(string printerType)
+        {
+            printerBox.Text = printerType;
         }
     }
 }

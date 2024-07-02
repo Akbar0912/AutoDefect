@@ -14,8 +14,6 @@ namespace AutoDefect.View
         string ModelNumber { get; set; }
         int DefectId { get; set; }
         string DefectName { get; set; }
-        int PartId { get; set; }
-        string PartName { get; set; }
         string InspectorId { get; set; }
         string InspectorName { get; set; }
         int Location { get; set; }
@@ -24,7 +22,7 @@ namespace AutoDefect.View
         event EventHandler SaveEvent;
         event EventHandler DataSaved;
 
-        void ShowPrintPreviewDialog(DefectResultModel model);
+        void ShowPrintPreviewDialog(DefectResultModel model, string printerType);
         void Show();
         void OnDataSaved();
     }
