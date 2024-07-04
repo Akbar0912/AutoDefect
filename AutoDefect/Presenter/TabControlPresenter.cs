@@ -62,8 +62,8 @@ namespace AutoDefect.Presenter
             if (searchModel != null)
             {
                 view.ModelNumber = searchModel.ModelNumber;
-                view.BackColorStatus = Color.Orange;
-                view.StatusText = "...";
+                view.BackColorStatus = Color.PowderBlue;
+                view.StatusText = "Pilih item defect ....";
             }
             else
             {
@@ -73,8 +73,8 @@ namespace AutoDefect.Presenter
 
         private void ClearAction(object sender, EventArgs e)
         {
-            view.BackColorStatus = Color.Orange;
-            view.StatusText = "No Data";
+            view.BackColorStatus = Color.PowderBlue;
+            view.StatusText = "";
             view.SerialNumber = "";
             view.ModelNumber = "";
             view.ModelCode = "";

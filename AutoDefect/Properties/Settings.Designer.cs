@@ -83,17 +83,6 @@ namespace AutoDefect.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-A0O7AHQS\\SQLEXPRESS;Initial Catalog=LSBUDB;Integrated Security" +
-            "=True;Encrypt=True;TrustServerCertificate=True")]
-        public string LSBUDBConnection {
-            get {
-                return ((string)(this["LSBUDBConnection"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]

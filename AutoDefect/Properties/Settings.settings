@@ -17,13 +17,6 @@
     <Setting Name="Port" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="LSBUDBConnection" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=LAPTOP-A0O7AHQS\SQLEXPRESS;Initial Catalog=LSBUDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True&lt;/ConnectionString&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=LAPTOP-A0O7AHQS\SQLEXPRESS;Initial Catalog=LSBUDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True</Value>
-    </Setting>
     <Setting Name="Location" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
